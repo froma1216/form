@@ -25,8 +25,7 @@
       <% if params[:level] == '50' %>
         <%= form.select :lap, options_for_select([['1周目', 1], ['2周目', 2], ['3周目', 3]], params[:lap].to_i), {}, class: "form-select form-select-lg", id: "lap" %>
       <% else %>
-        <%# TODO: 1周目～ %>
-        <%= form.select :lap, options_for_select([ ['4周目', 4], ['5周目', 5], ['6周目', 6], ['7周目', 7], ['8周目', 8]], params[:lap].to_i), {}, class: "form-select form-select-lg", id: "lap" %>
+        <%= form.select :lap, options_for_select([ ['1周目', 4], ['2周目', 5], ['3周目', 6], ['4周目', 7], ['5周目', 8]], params[:lap].to_i), {}, class: "form-select form-select-lg", id: "lap" %>
       <% end %>
       <%# ポケモン名 %>
       <label for="pokemon_name" class="form-label">ポケモン名</label>
