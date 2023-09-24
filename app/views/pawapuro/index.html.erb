@@ -1,0 +1,92 @@
+<%# 作成選手一覧 %>
+<div class="container">
+  <h1>作成選手一覧</h1>
+  <%# 検索 %>
+  <form>
+    <%# 選手名 %>
+    <label for="player_name" class="form-label">選手名</label>
+    <input type="search" class="form-control" autocomplete="name">
+    <%# 検索ボタン %>
+    <input type="submit" class="btn btn-primary" value="検索">
+  </form>
+  <%# 一覧表示部 %>
+  <table class="table table-hover caption-top">
+    <caption>※ 行クリックで、詳細モーダルを開きます。</caption>
+    <thead>
+      <tr>
+        <th scope="col" class="align-middle">#</th>
+        <th scope="col" class="align-middle">選手名</th>
+        <th scope="col" class="align-middle">守備位置</th>
+        <th scope="col" class="align-middle">投打</th>
+        <th scope="col" class="align-middle">弾道</th>
+        <th scope="col" class="align-middle">ミート</th>
+        <th scope="col" class="align-middle">パワー</th>
+        <th scope="col" class="align-middle">走力</th>
+        <th scope="col" class="align-middle">肩力</th>
+        <th scope="col" class="align-middle">守備力</th>
+        <th scope="col" class="align-middle">捕球</th>
+        <th scope="col" class="align-middle">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row" class="align-middle">1</th>
+        <td class="align-middle">吉田正</td>
+        <td class="align-middle"><strong>外</strong></td>
+        <td class="align-middle">右投左打</td>
+        <td class="align-middle">4</td>
+        <td class="align-middle">B:77</td>
+        <td class="align-middle">B:75</td>
+        <td class="align-middle">D:57</td>
+        <td class="align-middle">F:39</td>
+        <td class="align-middle">D:51</td>
+        <td class="align-middle">D:54</td>
+        <td class="align-middle">
+          <button type="button" class="btn btn-primary">編集</button>
+          <button type="button" class="btn btn-danger">削除</button>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row" class="align-middle">2</th>
+        <td class="align-middle">源田</td>
+        <td class="align-middle"><strong>遊</strong>・二・三</td>
+        <td class="align-middle">右投左打</td>
+        <td class="align-middle">2</td>
+        <td class="align-middle">E:43</td>
+        <td class="align-middle">E:42</td>
+        <td class="align-middle">A:86</td>
+        <td class="align-middle">C:67</td>
+        <td class="align-middle">A:89</td>
+        <td class="align-middle">B:77</td>
+        <td class="align-middle">
+          <button type="button" class="btn btn-primary">編集</button>
+          <button type="button" class="btn btn-danger">削除</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<%# 選手詳細モーダル %>
+<%= render 'player_details_modal' %>
+<%# TODO: jsファイルに切り出し %>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const tableRows = document.querySelectorAll('.table tbody tr');
+
+    tableRows.forEach(row => {
+      row.addEventListener('click', (e) => {
+        // もしボタンをクリックした場合、モーダルを開かない
+        if (e.target.tagName.toLowerCase() === 'button') return;
+
+        const playerName = row.querySelector('td').innerText;
+
+        // ここで選手の詳細情報を設定できます
+        // 実際には、API呼び出しやデータの取得方法に応じて変更が必要です
+        document.getElementById('playerDetails').innerText = `選手名：${playerName}`;
+
+        const modal = new bootstrap.Modal(document.getElementById('playerModal'));
+        modal.show();
+      });
+    });
+  });
+</script>

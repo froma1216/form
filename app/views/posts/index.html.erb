@@ -1,0 +1,26 @@
+<%# 投稿一覧ページ %>
+<div class="container">
+  <%# 投稿一覧表示 %>
+  <div class="shadow ">
+    <ul class="list-group list-group-flush ">
+      <% @posts.each do |post| %>
+        <li class="list-group-item d-flex flex-row">
+          <%# ユーザ画像 %>
+          <div class="">
+            <img src="<%= "/user_images/#{post.user.image_name}" %>">
+          </div>
+          <div class="">
+            <%# ユーザ名 %>
+            <div class="">
+              <%= link_to(post.user.name, "/users/#{post.user.id}") %>
+            </div>
+            <%# 投稿内容 %>
+            <div class="">
+              <%= link_to(post.content, "/posts/#{post.id}") %>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

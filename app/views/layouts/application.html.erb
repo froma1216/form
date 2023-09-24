@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FromaRailsApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%# Bootstrapのmin.css %>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <%# FontAwesomeを読み込む %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%# jsファイルでjQueryを使用可能にする %>
+    <%# TODO: 外部からよみこむのではなく、アプリ内で完結するように %>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <%# エメラルド：バトルフロンティアのラジオボタンで周セレクトボックスを切り替え %>
+    <%= javascript_include_tag 'e_frontier_switch_options' %>
+  </head>
+  <body>
+    <%# ヘッダー %>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <%# ロゴ %>
+        <% if @current_user %>
+          <%= link_to("TweetApp", posts_path, class: "navbar-brand") %>
+        <% else %>
+          <%= link_to("TweetApp", root_path, class: "navbar-brand") %>
+        <% end %>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav mr-auto">
+            <%# なんちゃってツイートアプリ %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                なんちゃってツイートアプリ
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <%# ログインユーザの有無 %>
+                <% if @current_user %>
+                  <%# ログイン中 %>
+                  <%= link_to("ユーザ情報："+@current_user.name, user_path(@current_user.id), class: "dropdown-item") %>
+                  <%= link_to("投稿一覧",posts_path, class: "dropdown-item") %>
+                  <%= link_to("新規投稿", new_post_path, class: "dropdown-item") %>
+                  <%= link_to("ユーザー一覧", users_path, class: "dropdown-item") %>
+                <% else %>
+                  <%# ログアウト中 %>
+                  <%= link_to("TweetAppとは",about_path, class: "dropdown-item") %>
+                  <%= link_to("新規登録", signup_path, class: "dropdown-item") %>
+                <% end %>
+              </div>
+            </li>
+            <%# パワプロ %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                パワプロ
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <%# ログインユーザの有無 %>
+                <%= link_to("作成選手一覧", pawapuro_index_path, class: "dropdown-item") %>
+                <%= link_to("投稿一覧",posts_path, class: "dropdown-item") %>
+                <%= link_to("新規投稿", new_post_path, class: "dropdown-item") %>
+                <%= link_to("ユーザー一覧", users_path, class: "dropdown-item") %>
+              </div>
+            </li>
+            <%# エメラルド：バトルフロンティア %>
+            <li>
+              <%= link_to("エメラルド：バトルフロンティア", e_frontier_path, class: "nav-link") %>
+            </li>
+            <%# ログインユーザの有無 %>
+            <% if @current_user %>
+              <%# ログイン中 %>
+              <li class="nav-item">
+                <%= link_to("ログアウト", logout_path, data: { "turbo-method": :post }, class: "nav-link") %>
+              </li>
+            <% else %>
+              <%# ログアウト中 %>
+              <li class="nav-item">
+                <%= link_to("ログイン", login_path, class: "nav-link") %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <%# メッセージ %>
+    <% if flash[:notice] %>
+      <div class="alert alert-primary" role="alert">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <%# 各画面 %>
+    <%= yield %>
+  </body>
+</html>

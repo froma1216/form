@@ -1,0 +1,44 @@
+<%# エメラルド：バトルフロンティア %>
+<div class="container">
+  <h1>エメラルド：バトルフロンティア</h1>
+  <%# 検索 %>
+  <%= form_with url: e_frontier_search_path, method: :get, local: false do |form| %>
+    <%# 入力欄 %>
+    <div class="mb-3">
+      <%# レベル50 or オープンレベル %>
+      <div>
+        <div class="form-check form-check-inline">
+          <%= form.radio_button :level, '50', class: "form-check-input", id: "level50" %>
+          <label class="form-check-label" for="level50">
+            レベル50
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <%= form.radio_button :level, 'open', class: "form-check-input", id: "open-level", checked: true %>
+          <label class="form-check-label" for="open-level">
+            オープンレベル
+          </label>
+        </div>
+      </div>
+      <%# 周 %>
+      <label for="lap" class="form-label">周</label>
+      <% if params[:level] == '50' %>
+        <%= form.select :lap, options_for_select([['1周目', 1], ['2周目', 2], ['3周目', 3]], params[:lap].to_i), {}, class: "form-select form-select-lg", id: "lap" %>
+      <% else %>
+        <%= form.select :lap, options_for_select([ ['4周目', 4], ['5周目', 5], ['6周目', 6], ['7周目', 7], ['8周目', 8]], params[:lap].to_i), {}, class: "form-select form-select-lg", id: "lap" %>
+      <% end %>
+      <%# ポケモン名 %>
+      <label for="pokemon_name" class="form-label">ポケモン名</label>
+      <%= form.text_field :name, value: params[:name], id: "name", autocomplete: "search", class: "form-control" %>
+    </div>
+    <%# 検索ボタン %>
+    <%= form.submit '検索',  class: "btn btn-primary" %>
+    <%# クリアボタン %>
+    <%= form.submit 'クリア', type: :reset ,class: "btn btn-secondary" %>
+  <% end %>
+  <%# 検索結果一覧表示 %>
+  <div class="result" id="result">
+    <%# TODO:下記はjsを経由していない。 %>
+    <%= render partial: 'search_results', locals: { pokemons: @hit_pokemon } %>
+  </div>
+</div>

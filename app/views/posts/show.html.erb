@@ -1,0 +1,43 @@
+<%# 投稿詳細ページ %>
+<div class="main posts-show">
+  <div class="container">
+    <div class="posts-show-item">
+      <%# ユーザ画像、ユーザ詳細リンク %>
+      <div class="post-user-name">
+        <img src="<%= "/user_images/#{@user.image_name}" %>">
+        <%= link_to(@user.name, "/users/#{@user.id}") %>
+      </div>
+      <p><%= @post.content %></p>
+      <div class="post-time">
+        <%# see: https://qiita.com/jnchito/items/831654253fb8a958ec25 %>
+        <%= l @post.created_at %>
+      </div>
+      <%# いいねアイコン表示 %>
+      <% if Like.find_by(user_id: @current_user.id, post_id: @post.id) %>
+        <%= link_to("/likes/#{@post.id}/destroy",data: { "turbo-method": :post }) do %>
+          <span class="fa fa-heart liked-btn"></span>
+        <% end %>
+      <% else %>
+        <%= link_to("/likes/#{@post.id}/create",data: { "turbo-method": :post }) do %>
+          <span class="fa fa-heart unliked-btn"></span>
+        <% end %>
+      <% end %>
+      <%# いいね数 %>
+      <%= @likes_count %>
+      <%# ログインユーザのみ、編集・削除を可能に %>
+      <% if @post.user_id == @current_user.id %>
+        <div class="post-menus">
+          <%# 編集リンク %>
+          <%= link_to("編集", "/posts/#{@post.id}/edit") %>
+          <%# 削除リンク %>
+          <%= link_to("削除", "/posts/#{@post.id}/destroy",data: { "turbo-method": :post }) %>
+          <%#
+            MEMO:rails6以前は下記のように記載。
+            link_to("削除", "/posts/#{@post.id}/destroy",{method:"post"})
+            https://qiita.com/Yokoyamamn0/items/9a6a3c4d49f52dcdd014
+          %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,2 @@
+<%# _search_results.html.erbをレンダリングして、その結果を.result要素の中に挿入 %>
+$("#result").html("<%= j render partial: 'search_results', locals: { pokemons: @hit_pokemon } %>");

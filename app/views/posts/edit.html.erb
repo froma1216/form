@@ -1,0 +1,22 @@
+<%# 投稿編集ページ %>
+<div class="main posts-new">
+  <div class="container">
+    <h1 class="form-heading">編集する</h1>
+    <%# 入力フォーム %>
+    <%= form_tag("/posts/#{@post.id}/update") do %>
+      <div class="form">
+        <div class="form-body">
+          <%# @postのエラーメッセージ %>
+          <% @post.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            </div>
+          <% end %>
+          <%# params[:content]に入力内容を送信する %>
+          <textarea name="content"><%= @post.content %></textarea>
+          <input type="submit" value="保存">
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
