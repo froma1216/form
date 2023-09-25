@@ -23,64 +23,66 @@
     <%# ヘッダー %>
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <%# ロゴ %>
-        <% if @current_user %>
-          <%= link_to("TweetApp", posts_path, class: "navbar-brand") %>
-        <% else %>
-          <%= link_to("TweetApp", root_path, class: "navbar-brand") %>
-        <% end %>
-        <div class="collapse navbar-collapse">
-          <ul class="navbar-nav mr-auto">
-            <%# なんちゃってツイートアプリ %>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                なんちゃってツイートアプリ
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <%# ログインユーザの有無 %>
-                <% if @current_user %>
-                  <%# ログイン中 %>
-                  <%= link_to("ユーザ情報："+@current_user.name, user_path(@current_user.id), class: "dropdown-item") %>
+        <div class="container-fluid">
+          <%# ロゴ %>
+          <% if @current_user %>
+            <%= link_to("TweetApp", posts_path, class: "navbar-brand") %>
+          <% else %>
+            <%= link_to("TweetApp", root_path, class: "navbar-brand") %>
+          <% end %>
+          <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+              <%# なんちゃってツイートアプリ %>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  なんちゃってツイートアプリ
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <%# ログインユーザの有無 %>
+                  <% if @current_user %>
+                    <%# ログイン中 %>
+                    <%= link_to("ユーザ情報："+@current_user.name, user_path(@current_user.id), class: "dropdown-item") %>
+                    <%= link_to("投稿一覧",posts_path, class: "dropdown-item") %>
+                    <%= link_to("新規投稿", new_post_path, class: "dropdown-item") %>
+                    <%= link_to("ユーザー一覧", users_path, class: "dropdown-item") %>
+                  <% else %>
+                    <%# ログアウト中 %>
+                    <%= link_to("TweetAppとは",about_path, class: "dropdown-item") %>
+                    <%= link_to("新規登録", signup_path, class: "dropdown-item") %>
+                  <% end %>
+                </div>
+              </li>
+              <%# パワプロ %>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  パワプロ
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <%# ログインユーザの有無 %>
+                  <%= link_to("作成選手一覧", pawapuro_index_path, class: "dropdown-item") %>
                   <%= link_to("投稿一覧",posts_path, class: "dropdown-item") %>
                   <%= link_to("新規投稿", new_post_path, class: "dropdown-item") %>
                   <%= link_to("ユーザー一覧", users_path, class: "dropdown-item") %>
-                <% else %>
-                  <%# ログアウト中 %>
-                  <%= link_to("TweetAppとは",about_path, class: "dropdown-item") %>
-                  <%= link_to("新規登録", signup_path, class: "dropdown-item") %>
-                <% end %>
-              </div>
-            </li>
-            <%# パワプロ %>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                パワプロ
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <%# ログインユーザの有無 %>
-                <%= link_to("作成選手一覧", pawapuro_index_path, class: "dropdown-item") %>
-                <%= link_to("投稿一覧",posts_path, class: "dropdown-item") %>
-                <%= link_to("新規投稿", new_post_path, class: "dropdown-item") %>
-                <%= link_to("ユーザー一覧", users_path, class: "dropdown-item") %>
-              </div>
-            </li>
-            <%# エメラルド：バトルフロンティア %>
-            <li>
-              <%= link_to("エメラルド：バトルフロンティア", e_frontier_path, class: "nav-link") %>
-            </li>
-            <%# ログインユーザの有無 %>
-            <% if @current_user %>
-              <%# ログイン中 %>
-              <li class="nav-item">
-                <%= link_to("ログアウト", logout_path, data: { "turbo-method": :post }, class: "nav-link") %>
+                </div>
               </li>
-            <% else %>
-              <%# ログアウト中 %>
-              <li class="nav-item">
-                <%= link_to("ログイン", login_path, class: "nav-link") %>
+              <%# エメラルド：バトルフロンティア %>
+              <li>
+                <%= link_to("エメラルド：バトルフロンティア", e_frontier_path, class: "nav-link") %>
               </li>
-            <% end %>
-          </ul>
+              <%# ログインユーザの有無 %>
+              <% if @current_user %>
+                <%# ログイン中 %>
+                <li class="nav-item">
+                  <%= link_to("ログアウト", logout_path, data: { "turbo-method": :post }, class: "nav-link") %>
+                </li>
+              <% else %>
+                <%# ログアウト中 %>
+                <li class="nav-item">
+                  <%= link_to("ログイン", login_path, class: "nav-link") %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
         </div>
       </nav>
     </header>

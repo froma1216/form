@@ -2,10 +2,22 @@
 <div class="container">
   <h1>作成選手一覧</h1>
   <%# 検索 %>
-  <form>
+  <form class="mb-3">
     <%# 選手名 %>
-    <label for="player_name" class="form-label">選手名</label>
-    <input type="search" class="form-control" autocomplete="name">
+    <div class="mb-3">
+      <label for="name" class="form-label">選手名</label>
+      <input type="search" class="form-control" id="name" autocomplete="name">
+    </div>
+    <%# ポジション %>
+    <%# TODO: セレクトにする %>
+    <div class="mb-3">
+      <label for="position" class="form-label">ポジション</label>
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="subPositionSwitch">
+        <label class="form-check-label" for="subPositionSwitch">サブポジションを含む</label>
+      </div>
+      <input type="search" class="form-control" id="position" autocomplete="name">
+    </div>
     <%# 検索ボタン %>
     <input type="submit" class="btn btn-primary" value="検索">
   </form>
@@ -35,12 +47,12 @@
         <td class="align-middle"><strong>外</strong></td>
         <td class="align-middle">右投左打</td>
         <td class="align-middle">4</td>
-        <td class="align-middle">B:77</td>
-        <td class="align-middle">B:75</td>
-        <td class="align-middle">D:57</td>
-        <td class="align-middle">F:39</td>
-        <td class="align-middle">D:51</td>
-        <td class="align-middle">D:54</td>
+        <td class="align-middle text-danger">B:77</td>
+        <td class="align-middle text-danger">B:75</td>
+        <td class="align-middle text-warning">D:57</td>
+        <td class="align-middle text-info">F:39</td>
+        <td class="align-middle text-warning">D:51</td>
+        <td class="align-middle text-warning">D:54</td>
         <td class="align-middle">
           <button type="button" class="btn btn-primary">編集</button>
           <button type="button" class="btn btn-danger">削除</button>
@@ -51,13 +63,13 @@
         <td class="align-middle">源田</td>
         <td class="align-middle"><strong>遊</strong>・二・三</td>
         <td class="align-middle">右投左打</td>
-        <td class="align-middle">2</td>
-        <td class="align-middle">E:43</td>
-        <td class="align-middle">E:42</td>
+        <td class="align-middle text-warning">2</td>
+        <td class="align-middle text-success">E:43</td>
+        <td class="align-middle text-success">E:42</td>
         <td class="align-middle">A:86</td>
         <td class="align-middle">C:67</td>
         <td class="align-middle">A:89</td>
-        <td class="align-middle">B:77</td>
+        <td class="align-middle text-danger">B:77</td>
         <td class="align-middle">
           <button type="button" class="btn btn-primary">編集</button>
           <button type="button" class="btn btn-danger">削除</button>
