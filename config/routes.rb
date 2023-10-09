@@ -1,20 +1,29 @@
 Rails.application.routes.draw do
+  # TODO: 総見直し
   # home
   root "home#top"
   get "about", to: "home#about"
   
   # パワプロ：選手作成メモ
-  # TODO:resourceにで対応（パスは/pawapuro/indexではなく、pawapuroになるはず。）
-  get 'pawapuro/index'
+  resources :pawapuro, except: [:destroy] do
+    member do
+    end
+  end
 
   # エメラルドバトルフロンティア
   get "e_frontier", to: "e_frontier#index"
   get "e_frontier_search", to: "e_frontier#search"
+  # resources :e_frontier, except: [:destroy] do
+  #   collection do
+  #     get :search # 全てのユーザに対する検索機能
+  #   end
+  # end
 
   # いいね
   resources :likes, only: [:create, :destroy], param: :post_id
 
   # ユーザ関連
+  # （index, new, create, show, edit, update, destroy）
   # resourceのイメージは下記の通り
   # GET    /users          => users#index
   # GET    /users/new      => users#new
@@ -40,8 +49,6 @@ Rails.application.routes.draw do
       post :destroy # 投稿削除
     end
   end
-
-
 
   # ログイン、ログアウト、サインアップ
   get "login", to: "users#login_form"

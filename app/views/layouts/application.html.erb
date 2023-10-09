@@ -58,16 +58,14 @@
                   パワプロ
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <%# ログインユーザの有無 %>
                   <%= link_to("作成選手一覧", pawapuro_index_path, class: "dropdown-item") %>
-                  <%= link_to("投稿一覧",posts_path, class: "dropdown-item") %>
-                  <%= link_to("新規投稿", new_post_path, class: "dropdown-item") %>
-                  <%= link_to("ユーザー一覧", users_path, class: "dropdown-item") %>
+                  <%= link_to("新規選手作成", new_pawapuro_path, class: "dropdown-item") %>
                 </div>
               </li>
               <%# エメラルド：バトルフロンティア %>
               <li>
                 <%= link_to("エメラルド：バトルフロンティア", e_frontier_path, class: "nav-link") %>
+                <%#= link_to("エメラルド：バトルフロンティア", e_frontier_index_path, class: "nav-link") %>
               </li>
               <%# ログインユーザの有無 %>
               <% if @current_user %>
