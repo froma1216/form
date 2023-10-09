@@ -3,13 +3,29 @@
   <h1>作成選手一覧</h1>
   <%# 検索 %>
   <form class="mb-3">
+    <%# 投/打ラジオ %>
+    <label class="form-label">表示能力</label>
+    <div class="mb-3">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" name="formRadio" type="radio" id="formRadioPitcher">
+        <label class="form-check-label" for="formRadioPitcher">
+          投手
+        </label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" name="formRadio" type="radio" id="formRadioFielder" checked>
+        <label class="form-check-label" for="formRadioFielder">
+          野手
+        </label>
+      </div>
+    </div>
     <%# 選手名 %>
     <div class="mb-3">
       <label for="name" class="form-label">選手名</label>
       <input type="search" class="form-control" id="name" autocomplete="name">
     </div>
     <%# ポジション %>
-    <%# TODO: セレクトにする %>
+    <%# TODO: チェックボックスにし、全ポジション表示 %>
     <div class="mb-3">
       <label for="position" class="form-label">ポジション</label>
       <div class="form-check form-switch">
@@ -46,15 +62,17 @@
         <td class="align-middle">吉田正</td>
         <td class="align-middle"><strong>外</strong></td>
         <td class="align-middle">右投左打</td>
-        <td class="align-middle">4</td>
-        <td class="align-middle text-danger">B:77</td>
-        <td class="align-middle text-danger">B:75</td>
-        <td class="align-middle text-warning">D:57</td>
-        <td class="align-middle text-info">F:39</td>
-        <td class="align-middle text-warning">D:51</td>
-        <td class="align-middle text-warning">D:54</td>
+        <td class="align-middle pawa-text-a">4</td>
+        <td class="align-middle pawa-text-b">B:77</td>
+        <td class="align-middle pawa-text-b">B:75</td>
+        <td class="align-middle pawa-text-d">D:57</td>
+        <td class="align-middle pawa-text-f">F:39</td>
+        <td class="align-middle pawa-text-d">D:51</td>
+        <td class="align-middle pawa-text-d">D:54</td>
         <td class="align-middle">
-          <button type="button" class="btn btn-primary">編集</button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#playerDetailsModal">
+            詳細
+          </button>
           <button type="button" class="btn btn-danger">削除</button>
         </td>
       </tr>
@@ -63,15 +81,17 @@
         <td class="align-middle">源田</td>
         <td class="align-middle"><strong>遊</strong>・二・三</td>
         <td class="align-middle">右投左打</td>
-        <td class="align-middle text-warning">2</td>
-        <td class="align-middle text-success">E:43</td>
-        <td class="align-middle text-success">E:42</td>
-        <td class="align-middle">A:86</td>
-        <td class="align-middle">C:67</td>
-        <td class="align-middle">A:89</td>
-        <td class="align-middle text-danger">B:77</td>
+        <td class="align-middle pawa-text-d">2</td>
+        <td class="align-middle pawa-text-e">E:43</td>
+        <td class="align-middle pawa-text-e">E:42</td>
+        <td class="align-middle pawa-text-a">A:86</td>
+        <td class="align-middle pawa-text-c">C:67</td>
+        <td class="align-middle pawa-text-a">A:89</td>
+        <td class="align-middle pawa-text-b">B:77</td>
         <td class="align-middle">
-          <button type="button" class="btn btn-primary">編集</button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#playerDetailsModal">
+            詳細
+          </button>
           <button type="button" class="btn btn-danger">削除</button>
         </td>
       </tr>
@@ -80,25 +100,3 @@
 </div>
 <%# 選手詳細モーダル %>
 <%= render 'player_details_modal' %>
-<%# TODO: jsファイルに切り出し %>
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const tableRows = document.querySelectorAll('.table tbody tr');
-
-    tableRows.forEach(row => {
-      row.addEventListener('click', (e) => {
-        // もしボタンをクリックした場合、モーダルを開かない
-        if (e.target.tagName.toLowerCase() === 'button') return;
-
-        const playerName = row.querySelector('td').innerText;
-
-        // ここで選手の詳細情報を設定できます
-        // 実際には、API呼び出しやデータの取得方法に応じて変更が必要です
-        document.getElementById('playerDetails').innerText = `選手名：${playerName}`;
-
-        const modal = new bootstrap.Modal(document.getElementById('playerModal'));
-        modal.show();
-      });
-    });
-  });
-</script>

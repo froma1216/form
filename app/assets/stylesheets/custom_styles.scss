@@ -1,0 +1,99 @@
+// 文字色
+// 全体
+.pawa-text-main {
+  color: #2274B1 !important;
+}
+// 基礎能力
+.pawa-text-s {
+  color: #E76C93 !important;
+}
+.pawa-text-a {
+  color: #DD07AC !important;
+}
+.pawa-text-b {
+  color: #DA0912 !important;
+}
+.pawa-text-c {
+  color: #EC810E !important;
+}
+.pawa-text-d {
+  color: #BDB005 !important;
+}
+.pawa-text-e {
+  color: #39CC05 !important;
+}
+.pawa-text-f {
+  color: #086DF4 !important;
+}
+.pawa-text-g {
+  color: #898687 !important;
+}
+// 特殊能力
+.pawa-text-good {
+  color: #4285B3 !important;
+}
+.pawa-text-bad {
+  color: #AB4D51 !important;
+}
+.pawa-text-sub {
+  color: #32865D !important;
+}
+.pawa-text-neutral {
+  color: #B2D8E1 !important;
+}
+
+
+// ボーダー色
+// 全体
+.pawa-border-main {
+  border: 3px solid #C6D9F2;
+}
+// 選手名
+.pawa-border-outfielder {
+  border: 3px solid #37A238;
+}
+
+
+// 背景色
+// 全体
+.pawa-bg-main {
+  background-color: #E5F4FA !important;
+}
+.pawa-bg-sub{
+  background-color: #C6D9F2 !important;
+}
+// 選手名
+.pawa-bg-sa-outfielder{
+  background-color: #68F177 !important;
+}
+// 特殊能力（special ability）
+.pawa-bg-sa-g1{
+  background-color: #09B3D4 !important;
+}
+.pawa-bg-sa-g2{
+  background-color: #BAF8FF !important;
+}
+.pawa-bg-sa-b1{
+background-color: #FA5E62 !important;
+}
+.pawa-bg-sa-b2{
+background-color: #FFCBCF !important;
+}
+.pawa-bg-sa-gb1{
+background: linear-gradient(90deg, #09B3D4 0%, #09B3D4 50%, #FA5E62 50%, #FA5E62 100%) !important;
+}
+.pawa-bg-sa-gb2{
+background: linear-gradient(90deg, #BAF8FF 0%, #BAF8FF 50%, #FFCBCF 50%, #FFCBCF 100%) !important;
+}
+.pawa-bg-sa-s1{
+  background-color: #48BFAE !important;
+}
+.pawa-bg-sa-s2{
+  background-color: #B2F5C8 !important;
+}
+.pawa-bg-sa-n1{
+  background-color: #A8E6FF !important;
+}
+.pawa-bg-sa-n2{
+  background-color: #DDF8FF !important;
+}
