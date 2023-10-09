@@ -2,21 +2,22 @@
 <div class="modal fade" id="playerDetailsModal" tabindex="-1" aria-labelledby="playerModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content pawa-bg-main">
+      <%# タブ %>
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">選手能力</a>
+          <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#playerBasic">選手能力</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">投手能力</a>
+          <a class="nav-link" data-bs-toggle="tab" data-bs-target="#playerPitcher">投手能力</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">野手能力</a>
+          <a class="nav-link" data-bs-toggle="tab" data-bs-target="#playerFielder">野手能力</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">守備・起用</a>
+          <a class="nav-link" data-bs-toggle="tab" data-bs-target="#playerPromotion">守備・起用</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">プロフィール</a>
+          <a class="nav-link" data-bs-toggle="tab" data-bs-target="#playerProfile">プロフィール</a>
         </li>
       </ul>
       <div class="modal-body">
@@ -37,247 +38,26 @@
           </div>
         </div>
         <%# 能力部 %>
-        <div class="container-fluid pawa-bg-sub rounded">
-          <div class="row p-2">
-            <%# 基礎能力部 %>
-            <div class="col-2 pe-4 pawa-text-main">
-              <div class="d-flex justify-content-start row border border-3 border-white rounded p-1 mb-1 pawa-bg-main">
-                <span class="col-5 pawa-border-main rounded p-1 text-center bg-white">弾道</span>
-                <div class="col-7 ps-3 py-2">
-                  <span class="pawa-text-a me-2 h5">↗</span>
-                  <span class="h5">4</span>
-                </div>
-              </div>
-              <div class="d-flex justify-content-start row border border-3 border-white rounded p-1 mb-1 pawa-bg-main">
-                <span class="col-5 pawa-border-main rounded p-1 text-center bg-white">ミート</span>
-                <div class="col-7 ps-3 py-2">
-                  <span class="pawa-text-b me-2 h5">B</span>
-                  <span class="h5">77</span>
-                </div>
-              </div>
-              <div class="d-flex justify-content-start row border border-3 border-white rounded p-1 mb-1 pawa-bg-main">
-                <span class="col-5 pawa-border-main rounded p-1 text-center bg-white">パワー</span>
-                <div class="col-7 ps-3 py-2">
-                  <span class="pawa-text-b me-2 h5">B</span>
-                  <span class="h5">75</span>
-                </div>
-              </div>
-              <div class="d-flex justify-content-start row border border-3 border-white rounded p-1 mb-1 pawa-bg-main">
-                <span class="col-5 pawa-border-main rounded p-1 text-center bg-white">走力</span>
-                <div class="col-7 ps-3 py-2">
-                  <span class="pawa-text-d me-2 h5">D</span>
-                  <span class="h5">57</span>
-                </div>
-              </div>
-              <div class="d-flex justify-content-start row border border-3 border-white rounded p-1 mb-1 pawa-bg-main">
-                <span class="col-5 pawa-border-main rounded p-1 text-center bg-white">肩力</span>
-                <div class="col-7 ps-3 py-2">
-                  <span class="pawa-text-f me-2 h5">F</span>
-                  <span class="h5">39</span>
-                </div>
-              </div>
-              <div class="d-flex justify-content-start row border border-3 border-white rounded p-1 mb-1 pawa-bg-main">
-                <span class="col-5 pawa-border-main rounded p-1 text-center bg-white">守備力</span>
-                <div class="col-7 ps-3 py-2">
-                  <span class="pawa-text-d me-2 h5">D</span>
-                  <span class="h5">51</span>
-                </div>
-              </div>
-              <div class="d-flex justify-content-start row border border-3 border-white rounded p-1 pawa-bg-main">
-                <span class="col-5 pawa-border-main rounded p-1 text-center bg-white">捕球</span>
-                <div class="col-7 ps-3 py-2">
-                  <span class="pawa-text-d me-2 h5">D</span>
-                  <span class="h5">54</span>
-                </div>
-              </div>
-            </div>
-            <%# 特殊能力部 %>
-            <div class="col-10 bg-light border border-3 border-white rounded">
-              <div class="row">
-                <div class="col fs-3 pawa-bg-sa-g1 rounded">
-                  <div class="row pt-1 pb-1 ps-1 text-center">
-                    <span class="col-10 pawa-bg-sa-g2 rounded px-3 pawa-text-good">チャンス</span>
-                    <span class="col-2 ps-2 text-light">C</span>
-                  </div>
-                </div>
-                <div class="col fs-3 pawa-bg-sa-b1 rounded">
-                  <div class="row pt-1 pb-1 ps-1 text-center">
-                    <span class="col-10 pawa-bg-sa-b2 rounded pawa-text-bad">対左投手</span>
-                    <span class="col-2 ps-2 text-light">F</span>
-                  </div>
-                </div>
-                <div class="col fs-3 pawa-bg-sa-n1 rounded">
-                  <div class="row pt-1 pb-1 ps-1 text-center">
-                    <span class="col-10 pawa-bg-main rounded pawa-text-neutral">&nbsp;</span>
-                    <span class="col-2 ps-2 text-light"></span>
-                  </div>
-                </div>
-                <div class="col fs-3 pawa-bg-sa-n1 rounded">
-                  <div class="row pt-1 pb-1 ps-1 text-center">
-                    <span class="col-10 pawa-bg-main rounded pawa-text-neutral">ケガしにくさ</span>
-                    <span class="col-2 ps-2 text-light">D</span>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col fs-3 pawa-bg-sa-n1 rounded">
-                  <div class="row pt-1 pb-1 ps-1 text-center">
-                    <span class="col-10 pawa-bg-sa-n2 rounded pawa-text-neutral">盗塁</span>
-                    <span class="col-2 ps-2 text-light">D</span>
-                  </div>
-                </div>
-                <div class="col fs-3 pawa-bg-sa-n1 rounded">
-                  <div class="row pt-1 pb-1 ps-1 text-center">
-                    <span class="col-10 pawa-bg-sa-n2 rounded pawa-text-neutral">走塁</span>
-                    <span class="col-2 ps-2 text-light">D</span>
-                  </div>
-                </div>
-                <div class="col fs-3 pawa-bg-sa-n1 rounded">
-                  <div class="row pt-1 pb-1 ps-1 text-center">
-                    <span class="col-10 pawa-bg-sa-n2 rounded pawa-text-neutral">送球</span>
-                    <span class="col-2 ps-2 text-light">D</span>
-                  </div>
-                </div>
-                <div class="col fs-3 pawa-bg-sa-g1 rounded">
-                  <div class="row pt-1 pb-1 ps-1 text-center">
-                    <span class="col-10 pawa-bg-sa-g2 rounded pawa-text-good">回復</span>
-                    <span class="col-2 ps-2 text-light">B</span>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col fs-3 pawa-bg-sa-g1 rounded">
-                  <div class="row p-1 text-center">
-                    <span class="col-12 pawa-bg-sa-g2 rounded pawa-text-good">アベレージヒッター</span>
-                  </div>
-                </div>
-                <div class="col fs-3 pawa-bg-sa-g1 rounded">
-                  <div class="row p-1 text-center">
-                    <span class="col-12 pawa-bg-sa-g2 rounded pawa-text-good">固め打ち</span>
-                  </div>
-                </div>
-                <div class="col fs-3 pawa-bg-sa-g1 rounded">
-                  <div class="row p-1 text-center">
-                    <span class="col-12 pawa-bg-sa-g2 rounded pawa-text-good">粘り打ち</span>
-                  </div>
-                </div>
-                <div class="col fs-3 pawa-bg-sa-g1 rounded">
-                  <div class="row p-1 text-center">
-                    <span class="col-12 pawa-bg-sa-g2 rounded pawa-text-good">内野安打◯</span>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col fs-3 pawa-bg-sa-g1 rounded">
-                  <div class="row p-1 text-center">
-                    <span class="col-12 pawa-bg-sa-g2 rounded pawa-text-good">インコースヒッター</span>
-                  </div>
-                </div>
-                <div class="col fs-3 pawa-bg-sa-g1 rounded">
-                  <div class="row p-1 text-center">
-                    <span class="col-12 pawa-bg-sa-g2 rounded pawa-text-good">カット打ち</span>
-                  </div>
-                </div>
-                <div class="col fs-3 pawa-bg-sa-g1 rounded">
-                  <div class="row p-1 text-center">
-                    <span class="col-12 pawa-bg-sa-g2 rounded pawa-text-good">マルチ弾</span>
-                  </div>
-                </div>
-                <div class="col fs-3 pawa-bg-sa-gb1 rounded">
-                  <div class="row p-1 text-center">
-                    <span class="col-12 pawa-bg-sa-gb2 rounded pawa-text-good">悪球打ち</span>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col fs-3 pawa-bg-sa-s1 rounded">
-                  <div class="row p-1 text-center">
-                    <span class="col-12 pawa-bg-sa-s2 rounded pawa-text-sub">選球眼</span>
-                  </div>
-                </div>
-                <div class="col fs-3 pawa-bg-sa-n1 rounded">
-                  <div class="row p-1 text-center">
-                    <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-                  </div>
-                </div>
-                <div class="col fs-3 pawa-bg-sa-n1 rounded">
-                  <div class="row p-1 text-center">
-                    <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-                  </div>
-                </div>
-                <div class="col fs-3 pawa-bg-sa-n1 rounded">
-                  <div class="row p-1 text-center">
-                    <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col fs-3 pawa-bg-sa-n1 rounded">
-                  <div class="row p-1 text-center">
-                    <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-                  </div>
-                </div>
-                <div class="col fs-3 pawa-bg-sa-n1 rounded">
-                  <div class="row p-1 text-center">
-                    <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-                  </div>
-                </div>
-                <div class="col fs-3 pawa-bg-sa-n1 rounded">
-                  <div class="row p-1 text-center">
-                    <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-                  </div>
-                </div>
-                <div class="col fs-3 pawa-bg-sa-n1 rounded">
-                  <div class="row p-1 text-center">
-                    <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col fs-3 pawa-bg-sa-n1 rounded">
-                  <div class="row p-1 text-center">
-                    <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-                  </div>
-                </div>
-                <div class="col fs-3 pawa-bg-sa-n1 rounded">
-                  <div class="row p-1 text-center">
-                    <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-                  </div>
-                </div>
-                <div class="col fs-3 pawa-bg-sa-n1 rounded">
-                  <div class="row p-1 text-center">
-                    <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-                  </div>
-                </div>
-                <div class="col fs-3 pawa-bg-sa-n1 rounded">
-                  <div class="row p-1 text-center">
-                    <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col fs-3 pawa-bg-sa-n1 rounded">
-                  <div class="row p-1 text-center">
-                    <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-                  </div>
-                </div>
-                <div class="col fs-3 pawa-bg-sa-n1 rounded">
-                  <div class="row p-1 text-center">
-                    <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-                  </div>
-                </div>
-                <div class="col fs-3 pawa-bg-sa-n1 rounded">
-                  <div class="row p-1 text-center">
-                    <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-                  </div>
-                </div>
-                <div class="col fs-3 pawa-bg-sa-n1 rounded">
-                  <div class="row p-1 text-center">
-                    <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div class="tab-content container-fluid pawa-bg-sub rounded">
+          <%# 選手能力 %>
+          <div class="tab-pane fade show active" id="playerBasic">
+            <%= render 'player_datails_basic' %>
+          </div>
+          <%# 投手能力 %>
+          <div class="tab-pane fade" id="playerPitcher">
+            <%= render 'player_datails_pitcher' %>
+          </div>
+          <%# 野手能力 %>
+          <div class="tab-pane fade" id="playerFielder">
+            <%= render 'player_datails_fielder' %>
+          </div>
+          <%# 守備・起用 %>
+          <div class="tab-pane fade" id="playerPromotion">
+            <%= render 'player_datails_promotion' %>
+          </div>
+          <%# プロフィール %>
+          <div class="tab-pane fade" id="playerProfile">
+            <%= render 'player_datails_profile' %>
           </div>
         </div>
       </div>
