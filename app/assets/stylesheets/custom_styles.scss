@@ -48,6 +48,10 @@
 .pawa-border-main {
   border: 3px solid #C6D9F2;
 }
+// 全体（内側）
+.pawa-border-main-in {
+  box-shadow: 0 0 0 5px #C6D9F2 inset;
+}
 // 選手名
 .pawa-border-outfielder {
   border: 3px solid #37A238;
@@ -74,16 +78,16 @@
   background-color: #BAF8FF !important;
 }
 .pawa-bg-sa-b1{
-background-color: #FA5E62 !important;
+  background-color: #FA5E62 !important;
 }
 .pawa-bg-sa-b2{
-background-color: #FFCBCF !important;
+  background-color: #FFCBCF !important;
 }
 .pawa-bg-sa-gb1{
-background: linear-gradient(90deg, #09B3D4 0%, #09B3D4 50%, #FA5E62 50%, #FA5E62 100%) !important;
+  background: linear-gradient(90deg, #09B3D4 0%, #09B3D4 50%, #FA5E62 50%, #FA5E62 100%) !important;
 }
 .pawa-bg-sa-gb2{
-background: linear-gradient(90deg, #BAF8FF 0%, #BAF8FF 50%, #FFCBCF 50%, #FFCBCF 100%) !important;
+  background: linear-gradient(90deg, #BAF8FF 0%, #BAF8FF 50%, #FFCBCF 50%, #FFCBCF 100%) !important;
 }
 .pawa-bg-sa-s1{
   background-color: #48BFAE !important;
@@ -96,6 +100,41 @@ background: linear-gradient(90deg, #BAF8FF 0%, #BAF8FF 50%, #FFCBCF 50%, #FFCBCF
 }
 .pawa-bg-sa-n2{
   background-color: #DDF8FF !important;
+}
+
+
+// その他
+.pawa-breaking-font {
+  font-size: 12px;
+}
+
+// 変化球ブロック：あり
+.pawa-breaking-block-exist {
+  background: linear-gradient(#DB4A38,#FEEF31);
+  border: 2px solid #2274B1;
+  // box-shadow: 0 0 0 2px #2274B1 inset;
+  height: 8px;
+}
+// 変化球ブロック：なし
+.pawa-breaking-block-nil {
+  background-color: #4DBAFF;
+  border: 2px solid #2274B1;
+  // box-shadow: 0 0 0 2px #2274B1 inset;
+  height: 8px;
+}
+// 変化球ブロック（第二球種）：あり
+.pawa-breaking-block-second-exist {
+  background: linear-gradient(#DB4A38,#FEEF31);
+  border: 2px solid #2274B1;
+  // box-shadow: 0 0 0 2px #2274B1 inset;
+  height: 8px;
+}
+// 変化球ブロック：（第二球種）なし
+.pawa-breaking-block-second-nil {
+  background-color: #4DBAFF;
+  border: 2px solid #2274B1;
+  // box-shadow: 0 0 0 2px #2274B1 inset;
+  height: 8px;
 }
 
 .tighter-letter-spacing {
