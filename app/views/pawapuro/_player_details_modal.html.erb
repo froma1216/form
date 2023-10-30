@@ -25,13 +25,17 @@
         <div class="d-flex justify-content-between">
           <h5 class="pawa-bg-sa-outfielder pawa-border-outfielder rounded px-4 py-1 mb-2 text-center h3" id="playerDetails">吉田正</h5>
           <div class="d-flex align-items-center pawa-text-main">
-            <span class="pawa-border-main  rounded p-1 text-center bg-white">守備位置</span>
+            <div class="p-0">
+              <div class="pawa-ability-label">守備位置</div>
+            </div>
             <span class="ms-1">
               <strong>外</strong>
             </span>
           </div>
           <div class="d-flex align-items-center pawa-text-main">
-            <span class="pawa-border-main rounded p-1 text-center bg-white">投打</span>
+            <div class="p-0">
+              <div class="pawa-ability-label">投打</div>
+            </div>
             <span class="ms-1">
               <strong>右投左打</strong>
             </span>
@@ -41,7 +45,8 @@
         <div class="tab-content container-fluid pawa-bg-sub rounded">
           <%# 選手能力 %>
           <div class="tab-pane fade show active" id="playerBasic">
-            <%= render 'player_datails_basic' %>
+            <%# TODO: メインポジションが投手か野手によって、表示を分ける %>
+            <%= render 'player_datails_fielder' %>
           </div>
           <%# 投手能力 %>
           <div class="tab-pane fade" id="playerPitcher">
