@@ -7,6 +7,7 @@ import "controllers";
 import Rails from "@rails/ujs";
 import "bootstrap";
 import "../stylesheets/application.scss";
+import "@fortawesome/fontawesome-free/css/all.css";
 
 Rails.start();
 // テスト
