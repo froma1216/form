@@ -3,9 +3,13 @@ Rails.application.routes.draw do
   # home
   root "home#top"
   get "about", to: "home#about"
-  
+
   # パワプロ：選手作成メモ
-  resources :pawapuro, except: [:destroy] do
+  resources :pawapuro, except: [:show, :destroy] do
+    collection do
+      get "confirm", to: "pawapuro#confirm" # 選手作成確認画面
+      # post "confirm", to: "pawapuro#confirm" # 選手作成確認画面
+    end
     member do
     end
   end

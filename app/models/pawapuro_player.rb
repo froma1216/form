@@ -1,0 +1,2 @@
+class PawapuroPlayer < ApplicationRecord
+end
