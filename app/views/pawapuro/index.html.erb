@@ -57,44 +57,27 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row" class="align-middle">1</th>
-        <td class="align-middle">吉田正</td>
-        <td class="align-middle"><strong>外</strong></td>
-        <td class="align-middle">右投左打</td>
-        <td class="align-middle pawa-text-a">4</td>
-        <td class="align-middle pawa-text-b">B:77</td>
-        <td class="align-middle pawa-text-b">B:75</td>
-        <td class="align-middle pawa-text-d">D:57</td>
-        <td class="align-middle pawa-text-f">F:39</td>
-        <td class="align-middle pawa-text-d">D:51</td>
-        <td class="align-middle pawa-text-d">D:54</td>
-        <td class="align-middle">
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#playerDetailsModal">
-            詳細
-          </button>
-          <button type="button" class="btn btn-danger">削除</button>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row" class="align-middle">2</th>
-        <td class="align-middle">源田</td>
-        <td class="align-middle"><strong>遊</strong>・二・三</td>
-        <td class="align-middle">右投左打</td>
-        <td class="align-middle pawa-text-d">2</td>
-        <td class="align-middle pawa-text-e">E:43</td>
-        <td class="align-middle pawa-text-e">E:42</td>
-        <td class="align-middle pawa-text-a">A:86</td>
-        <td class="align-middle pawa-text-c">C:67</td>
-        <td class="align-middle pawa-text-a">A:89</td>
-        <td class="align-middle pawa-text-b">B:77</td>
-        <td class="align-middle">
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#playerDetailsModal">
-            詳細
-          </button>
-          <button type="button" class="btn btn-danger">削除</button>
-        </td>
-      </tr>
+      <% @hit_player.each do |player| %>
+        <tr>
+          <th scope="row" class="align-middle">1</th>
+          <td class="align-middle"><%= player.player_name %></td>
+          <td class="align-middle"><strong><%= player.main_position %></strong></td>
+          <td class="align-middle"><%= player.throws %>投<%= player.bats %>打</td>
+          <td class="align-middle pawa-text-a">4</td>
+          <td class="align-middle pawa-text-b">B:77</td>
+          <td class="align-middle pawa-text-b">B:75</td>
+          <td class="align-middle pawa-text-d">D:57</td>
+          <td class="align-middle pawa-text-f">F:39</td>
+          <td class="align-middle pawa-text-d">D:51</td>
+          <td class="align-middle pawa-text-d">D:54</td>
+          <td class="align-middle">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#playerDetailsModal">
+              詳細
+            </button>
+            <button type="button" class="btn btn-danger">削除</button>
+          </td>
+        </tr>
+      <% end %>
     </tbody>
   </table>
 </div>

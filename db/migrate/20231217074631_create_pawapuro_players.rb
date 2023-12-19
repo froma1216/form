@@ -3,6 +3,7 @@ class CreatePawapuroPlayers < ActiveRecord::Migration[7.0]
     create_table :pawapuro_players do |t|
       t.string :last_name
       t.string :first_name
+      t.string :player_name
       t.string :back_name
       t.date :birthday
       t.integer :main_position
@@ -14,6 +15,8 @@ class CreatePawapuroPlayers < ActiveRecord::Migration[7.0]
       t.integer :sub_position_7
       t.string :throws
       t.string :bats
+      t.integer :pitcher_id
+      t.integer :fielder_id
       t.text :note
       t.string :created_by
       t.string :updated_by

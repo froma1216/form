@@ -3,6 +3,7 @@
 one:
   last_name: MyString
   first_name: MyString
+  player_name: MyString
   back_name: MyString
   birthday: 2023-12-17
   main_position: 1
@@ -14,6 +15,8 @@ one:
   sub_position_7: 1
   throws: MyString
   bats: MyString
+  pitcher_id: 1
+  fielder_id: 1
   note: MyText
   created_by: MyString
   updated_by: MyString
@@ -21,6 +24,7 @@ one:
 two:
   last_name: MyString
   first_name: MyString
+  player_name: MyString
   back_name: MyString
   birthday: 2023-12-17
   main_position: 1
@@ -32,6 +36,8 @@ two:
   sub_position_7: 1
   throws: MyString
   bats: MyString
+  pitcher_id: 1
+  fielder_id: 1
   note: MyText
   created_by: MyString
   updated_by: MyString
