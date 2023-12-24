@@ -61,15 +61,34 @@
         <tr>
           <th scope="row" class="align-middle">1</th>
           <td class="align-middle"><%= player.player_name %></td>
-          <td class="align-middle"><strong><%= player.main_position %></strong></td>
+          <%# TODO: サブポジも表示 %>
+          <td class="align-middle"><strong><%= display_position_name(player.main_position) %></strong></td>
           <td class="align-middle"><%= player.throws %>投<%= player.bats %>打</td>
-          <td class="align-middle pawa-text-a">4</td>
-          <td class="align-middle pawa-text-b">B:77</td>
-          <td class="align-middle pawa-text-b">B:75</td>
-          <td class="align-middle pawa-text-d">D:57</td>
-          <td class="align-middle pawa-text-f">F:39</td>
-          <td class="align-middle pawa-text-d">D:51</td>
-          <td class="align-middle pawa-text-d">D:54</td>
+          <td class="align-middle"><%= display_trajectory(player.pawapuro_fielder.trajectory) %></td>
+          <td class="align-middle">
+            <%= display_alphabet(player.pawapuro_fielder.meat) %>
+            <%= player.pawapuro_fielder.meat %>
+          </td>
+          <td class="align-middle">
+            <%= display_alphabet(player.pawapuro_fielder.power) %>
+            <%= player.pawapuro_fielder.power %>
+          </td>
+          <td class="align-middle">
+            <%= display_alphabet(player.pawapuro_fielder.running) %>
+            <%= player.pawapuro_fielder.running %>
+          </td>
+          <td class="align-middle">
+            <%= display_alphabet(player.pawapuro_fielder.arm_strength) %>
+            <%= player.pawapuro_fielder.arm_strength %>
+          </td>
+          <td class="align-middle">
+            <%= display_alphabet(player.pawapuro_fielder.defense) %>
+            <%= player.pawapuro_fielder.defense %>
+          </td>
+          <td class="align-middle">
+            <%= display_alphabet(player.pawapuro_fielder.catching) %>
+            <%= player.pawapuro_fielder.catching %>
+          </td>
           <td class="align-middle">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#playerDetailsModal">
               詳細

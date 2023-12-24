@@ -47,7 +47,8 @@
 // 上下2色
 .pawa-text-gb {
   background: linear-gradient(to bottom, #4285B3 50%, #AB4D51 50%);
-  -webkit-background-clip: text;
+  -webkit-background-clip: text; /* Safari用 */
+  background-clip: text;         /* 標準プロパティ */
   color: transparent;
 }
 
