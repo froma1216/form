@@ -57,7 +57,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @hit_player.each do |player| %>
+      <% @players.each do |player| %>
         <tr>
           <th scope="row" class="align-middle">1</th>
           <td class="align-middle"><%= player.player_name %></td>
@@ -90,9 +90,10 @@
             <%= player.pawapuro_fielder.catching %>
           </td>
           <td class="align-middle">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#playerDetailsModal">
+            <button type="button" id="my_button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#playerDetailsModal">
               詳細
             </button>
+            <%= link_to '詳細modal', details_pawapuro_path(player), remote: true, class: 'btn btn-primary details-button', id: "details_#{player.id}", data: { turbo: false, toggle: 'modal', target: '#playerDetailsModal' } %>
             <button type="button" class="btn btn-danger">削除</button>
           </td>
         </tr>

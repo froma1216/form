@@ -1,0 +1,4 @@
+// モーダルの内容を更新し、表示する
+// TODO: 最終的に、詳細画面ではなく当ファイルでモーダルを表示
+$("#playerDetailsModal .modal-body").html("<%= j render 'player_details_modal', player: @player %>");
+$("#playerDetailsModal").modal('show');

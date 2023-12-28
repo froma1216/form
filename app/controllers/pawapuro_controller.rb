@@ -1,7 +1,16 @@
 class PawapuroController < ApplicationController
   # 選手一覧画面
   def index
-    @hit_player = PawapuroPlayer.all
+    @players = PawapuroPlayer.all
+  end
+
+  # 選手詳細モーダル
+  def details
+    @player = PawapuroPlayer.find(params[:id])
+    respond_to do |format|
+      format.js # JavaScriptレスポンスを期待
+      # format.html # JavaScriptレスポンスを期待
+    end
   end
 
   # 選手作成入力画面

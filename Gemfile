@@ -90,3 +90,6 @@ gem 'sass-rails'
 
 # webpacker
 gem 'webpacker'
+
+# Turbo
+gem 'hotwire-rails'

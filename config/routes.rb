@@ -10,7 +10,9 @@ Rails.application.routes.draw do
       get "confirm", to: "pawapuro#confirm" # 選手作成確認画面
       # post "confirm", to: "pawapuro#confirm" # 選手作成確認画面
     end
+    #  idを含むパス
     member do
+      get "details", to: "pawapuro#details" # 選手詳細モーダル
     end
   end
 

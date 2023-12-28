@@ -32,7 +32,7 @@
           <%# 削除リンク %>
           <%= link_to("削除", "/posts/#{@post.id}/destroy",data: { "turbo-method": :post }) %>
           <%#
-            MEMO:rails6以前は下記のように記載。
+            NOTE:rails6以前は下記のように記載。
             link_to("削除", "/posts/#{@post.id}/destroy",{method:"post"})
             https://qiita.com/Yokoyamamn0/items/9a6a3c4d49f52dcdd014
           %>
