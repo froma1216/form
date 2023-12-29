@@ -64,7 +64,11 @@
           <%# TODO: サブポジも表示 %>
           <td class="align-middle"><strong><%= display_position_name(player.main_position) %></strong></td>
           <td class="align-middle"><%= player.throws %>投<%= player.bats %>打</td>
-          <td class="align-middle"><%= display_trajectory(player.pawapuro_fielder.trajectory) %></td>
+          <%# TODO: 値によって角度を変える %>
+          <td class="align-middle">
+            <span class="pawa-text-a me-2 h5"><i class="fa fa-solid fa-arrow-right"></i></span>
+            <%= display_trajectory(player.pawapuro_fielder.trajectory) %>
+          </td>
           <td class="align-middle">
             <%= display_alphabet(player.pawapuro_fielder.meat) %>
             <%= player.pawapuro_fielder.meat %>
@@ -90,9 +94,9 @@
             <%= player.pawapuro_fielder.catching %>
           </td>
           <td class="align-middle">
-            <button type="button" id="my_button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#playerDetailsModal">
+            <%# <button type="button" id="my_button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#playerDetailsModal">
               詳細
-            </button>
+            </button> %>
             <%= link_to '詳細modal', details_pawapuro_path(player), remote: true, class: 'btn btn-primary details-button', id: "details_#{player.id}", data: { turbo: false, toggle: 'modal', target: '#playerDetailsModal' } %>
             <button type="button" class="btn btn-danger">削除</button>
           </td>
@@ -102,4 +106,4 @@
   </table>
 </div>
 <%# 選手詳細モーダル %>
-<%= render 'player_details_modal' %>
+<%#= render 'player_details_modal' %>

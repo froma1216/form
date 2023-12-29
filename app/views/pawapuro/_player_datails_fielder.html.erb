@@ -8,10 +8,9 @@
         <div class="pawa-ability-label">弾道</div>
       </div>
       <div class="col-7 ps-3 py-2">
-        <%# TODO: アイコンに差し替える
-        NOTE: https://fontawesome.com/icons/right?f=classic&s=solid %>
-        <span class="pawa-text-a me-2 h5">↗</span>
-        <span class="h5">4</span>
+        <%# TODO: 値によって角度を変える %>
+        <span class="pawa-text-a me-2 h5"><i class="fa fa-solid fa-arrow-right"></i></span>
+        <span class="h5"><%= @player.pawapuro_fielder.trajectory %></span>
       </div>
     </div>
     <div class="d-flex justify-content-start row border border-3 border-white rounded p-1 mb-1 pawa-bg-main">
@@ -19,8 +18,8 @@
         <div class="pawa-ability-label">ミート</div>
       </div>
       <div class="col-7 ps-3 py-2">
-        <span class="pawa-text-b me-2 h5">B</span>
-        <span class="h5">77</span>
+        <span class="pawa-text-b me-2 h5"><%= display_alphabet(@player.pawapuro_fielder.meat) %></span>
+        <span class="h5"><%= @player.pawapuro_fielder.meat %></span>
       </div>
     </div>
     <div class="d-flex justify-content-start row border border-3 border-white rounded p-1 mb-1 pawa-bg-main">
@@ -28,8 +27,8 @@
         <div class="pawa-ability-label">パワー</div>
       </div>
       <div class="col-7 ps-3 py-2">
-        <span class="pawa-text-b me-2 h5">B</span>
-        <span class="h5">75</span>
+        <span class="pawa-text-b me-2 h5"><%= display_alphabet(@player.pawapuro_fielder.power) %></span>
+        <span class="h5"><%= @player.pawapuro_fielder.power %></span>
       </div>
     </div>
     <div class="d-flex justify-content-start row border border-3 border-white rounded p-1 mb-1 pawa-bg-main">
@@ -37,8 +36,8 @@
         <div class="pawa-ability-label">走力</div>
       </div>
       <div class="col-7 ps-3 py-2">
-        <span class="pawa-text-d me-2 h5">D</span>
-        <span class="h5">57</span>
+        <span class="pawa-text-d me-2 h5"><%= display_alphabet(@player.pawapuro_fielder.running) %></span>
+        <span class="h5"><%= @player.pawapuro_fielder.running %></span>
       </div>
     </div>
     <div class="d-flex justify-content-start row border border-3 border-white rounded p-1 mb-1 pawa-bg-main">
@@ -46,8 +45,8 @@
         <div class="pawa-ability-label">肩力</div>
       </div>
       <div class="col-7 ps-3 py-2">
-        <span class="pawa-text-f me-2 h5">F</span>
-        <span class="h5">39</span>
+        <span class="pawa-text-f me-2 h5"><%= display_alphabet(@player.pawapuro_fielder.arm_strength) %></span>
+        <span class="h5"><%= @player.pawapuro_fielder.arm_strength %></span>
       </div>
     </div>
     <div class="d-flex justify-content-start row border border-3 border-white rounded p-1 mb-1 pawa-bg-main">
@@ -55,8 +54,8 @@
         <div class="pawa-ability-label">守備力</div>
       </div>
       <div class="col-7 ps-3 py-2">
-        <span class="pawa-text-d me-2 h5">D</span>
-        <span class="h5">51</span>
+        <span class="pawa-text-d me-2 h5"><%= display_alphabet(@player.pawapuro_fielder.defense) %></span>
+        <span class="h5"><%= @player.pawapuro_fielder.defense %></span>
       </div>
     </div>
     <div class="d-flex justify-content-start row border border-3 border-white rounded p-1 pawa-bg-main">
@@ -64,64 +63,30 @@
         <div class="pawa-ability-label">捕球</div>
       </div>
       <div class="col-7 ps-3 py-2">
-        <span class="pawa-text-d me-2 h5">D</span>
-        <span class="h5">54</span>
+        <span class="pawa-text-d me-2 h5"><%= display_alphabet(@player.pawapuro_fielder.catching) %></span>
+        <span class="h5"><%= @player.pawapuro_fielder.catching %></span>
       </div>
     </div>
   </div>
   <%# 特殊能力部 %>
   <div class="col-9 bg-light border border-3 border-white rounded">
     <div class="row">
-      <div class="col fs-3 pawa-bg-sa-g1 rounded">
-        <div class="row pt-1 pb-1 ps-1 text-center">
-          <span class="col-10 pawa-bg-sa-g2 rounded px-3 pawa-text-good">チャンス</span>
-          <span class="col-2 ps-2 text-light">C</span>
-        </div>
-      </div>
-      <div class="col fs-3 pawa-bg-sa-b1 rounded">
-        <div class="row pt-1 pb-1 ps-1 text-center">
-          <span class="col-10 pawa-bg-sa-b2 rounded pawa-text-bad">対左投手</span>
-          <span class="col-2 ps-2 text-light">F</span>
-        </div>
-      </div>
+      <%= render partial: 'special_ability_value_box', locals: { ability_name:"チャンス", ability_value: @player.pawapuro_fielder.chance } %>
+      <%= render partial: 'special_ability_value_box', locals: { ability_name:"対左投手", ability_value: @player.pawapuro_fielder.taihidaritousyu } %>
+      <%# TODO: テーブルに「キャッチャー」を追加 %>
       <div class="col fs-3 pawa-bg-sa-n1 rounded">
         <div class="row pt-1 pb-1 ps-1 text-center">
           <span class="col-10 pawa-bg-main rounded pawa-text-neutral">&nbsp;</span>
           <span class="col-2 ps-2 text-light"></span>
         </div>
       </div>
-      <div class="col fs-3 pawa-bg-sa-n1 rounded">
-        <div class="row pt-1 pb-1 ps-1 text-center">
-          <span class="col-10 pawa-bg-main rounded pawa-text-neutral">ケガしにくさ</span>
-          <span class="col-2 ps-2 text-light">D</span>
-        </div>
-      </div>
+      <%= render partial: 'special_ability_value_box', locals: { ability_name:"ケガしにくさ", ability_value: @player.kegasinikusa } %>
     </div>
     <div class="row">
-      <div class="col fs-3 pawa-bg-sa-n1 rounded">
-        <div class="row pt-1 pb-1 ps-1 text-center">
-          <span class="col-10 pawa-bg-sa-n2 rounded pawa-text-neutral">盗塁</span>
-          <span class="col-2 ps-2 text-light">D</span>
-        </div>
-      </div>
-      <div class="col fs-3 pawa-bg-sa-n1 rounded">
-        <div class="row pt-1 pb-1 ps-1 text-center">
-          <span class="col-10 pawa-bg-sa-n2 rounded pawa-text-neutral">走塁</span>
-          <span class="col-2 ps-2 text-light">D</span>
-        </div>
-      </div>
-      <div class="col fs-3 pawa-bg-sa-n1 rounded">
-        <div class="row pt-1 pb-1 ps-1 text-center">
-          <span class="col-10 pawa-bg-sa-n2 rounded pawa-text-neutral">送球</span>
-          <span class="col-2 ps-2 text-light">D</span>
-        </div>
-      </div>
-      <div class="col fs-3 pawa-bg-sa-g1 rounded">
-        <div class="row pt-1 pb-1 ps-1 text-center">
-          <span class="col-10 pawa-bg-sa-g2 rounded pawa-text-good">回復</span>
-          <span class="col-2 ps-2 text-light">B</span>
-        </div>
-      </div>
+      <%= render partial: 'special_ability_value_box', locals: { ability_name:"盗塁", ability_value: @player.pawapuro_fielder.tourui } %>
+      <%= render partial: 'special_ability_value_box', locals: { ability_name:"走塁", ability_value: @player.pawapuro_fielder.sourui } %>
+      <%= render partial: 'special_ability_value_box', locals: { ability_name:"送球", ability_value: @player.pawapuro_fielder.soukyuu } %>
+      <%= render partial: 'special_ability_value_box', locals: { ability_name:"回復", ability_value: @player.kaifuku } %>
     </div>
     <div class="row">
       <div class="col fs-3 pawa-bg-sa-g1 rounded">

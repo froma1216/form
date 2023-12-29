@@ -10,7 +10,18 @@ module PawapuroHelper
       6 => "遊",
       7 => "外"
     }
+    content_tag(:span, positions[val] || "ERR")
+  end
 
+  # 数値をアルファベットに変換
+  def display_apecial_ability_alphabet(val)
+    positions = {
+      -2 => "F",
+      -1 => "E",
+      0 => "D",
+      1 => "C",
+      2 => "A"
+    }
     content_tag(:span, positions[val] || "ERR")
   end
 

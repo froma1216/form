@@ -9,7 +9,7 @@ class PawapuroController < ApplicationController
     @player = PawapuroPlayer.find(params[:id])
     respond_to do |format|
       format.js # JavaScriptレスポンスを期待
-      # format.html # JavaScriptレスポンスを期待
+      format.html # TODO: 暫定処置。非同期で上記が表示できるようになったら消す。
     end
   end
 
