@@ -71,4 +71,12 @@ module PawapuroHelper
       content_tag(:div, "", class: "col-1 #{class_name}")
     end.join.html_safe
   end
+
+  # 年齢計算
+  def calculate_age(birthday)
+    now = Date.today
+    age = now.year - birthday.year
+    age -= 1 if now.yday < birthday.yday
+    age
+  end
 end

@@ -1,14 +1,16 @@
 <%# プロフィール %>
 <div class="row p-2">
   <%# 基礎能力部 %>
+  <%# FIXME: 部分テンプレートに切り出し %>
   <div class="col-3 pe-4 pawa-text-main">
     <div class="d-flex justify-content-start row border border-3 border-white rounded p-1 mb-1 pawa-bg-main">
       <div class="col-5 p-0">
         <div class="pawa-ability-label">弾道</div>
       </div>
       <div class="col-7 ps-3 py-2">
-        <span class="pawa-text-a me-2 h5">↗</span>
-        <span class="h5">4</span>
+        <%# TODO: 値によって角度を変える %>
+        <span class="pawa-text-a me-2 h5"><i class="fa fa-solid fa-arrow-right"></i></span>
+        <span class="h5"><%= @player.pawapuro_fielder.trajectory %></span>
       </div>
     </div>
     <div class="d-flex justify-content-start row border border-3 border-white rounded p-1 mb-1 pawa-bg-main">
@@ -16,8 +18,8 @@
         <div class="pawa-ability-label">ミート</div>
       </div>
       <div class="col-7 ps-3 py-2">
-        <span class="pawa-text-b me-2 h5">B</span>
-        <span class="h5">77</span>
+        <span class="me-2 h5"><%= display_alphabet(@player.pawapuro_fielder.meat) %></span>
+        <span class="h5"><%= @player.pawapuro_fielder.meat %></span>
       </div>
     </div>
     <div class="d-flex justify-content-start row border border-3 border-white rounded p-1 mb-1 pawa-bg-main">
@@ -25,8 +27,8 @@
         <div class="pawa-ability-label">パワー</div>
       </div>
       <div class="col-7 ps-3 py-2">
-        <span class="pawa-text-b me-2 h5">B</span>
-        <span class="h5">75</span>
+        <span class="me-2 h5"><%= display_alphabet(@player.pawapuro_fielder.power) %></span>
+        <span class="h5"><%= @player.pawapuro_fielder.power %></span>
       </div>
     </div>
     <div class="d-flex justify-content-start row border border-3 border-white rounded p-1 mb-1 pawa-bg-main">
@@ -34,8 +36,8 @@
         <div class="pawa-ability-label">走力</div>
       </div>
       <div class="col-7 ps-3 py-2">
-        <span class="pawa-text-d me-2 h5">D</span>
-        <span class="h5">57</span>
+        <span class="me-2 h5"><%= display_alphabet(@player.pawapuro_fielder.running) %></span>
+        <span class="h5"><%= @player.pawapuro_fielder.running %></span>
       </div>
     </div>
     <div class="d-flex justify-content-start row border border-3 border-white rounded p-1 mb-1 pawa-bg-main">
@@ -43,8 +45,8 @@
         <div class="pawa-ability-label">肩力</div>
       </div>
       <div class="col-7 ps-3 py-2">
-        <span class="pawa-text-f me-2 h5">F</span>
-        <span class="h5">39</span>
+        <span class="me-2 h5"><%= display_alphabet(@player.pawapuro_fielder.arm_strength) %></span>
+        <span class="h5"><%= @player.pawapuro_fielder.arm_strength %></span>
       </div>
     </div>
     <div class="d-flex justify-content-start row border border-3 border-white rounded p-1 mb-1 pawa-bg-main">
@@ -52,8 +54,8 @@
         <div class="pawa-ability-label">守備力</div>
       </div>
       <div class="col-7 ps-3 py-2">
-        <span class="pawa-text-d me-2 h5">D</span>
-        <span class="h5">51</span>
+        <span class="me-2 h5"><%= display_alphabet(@player.pawapuro_fielder.defense) %></span>
+        <span class="h5"><%= @player.pawapuro_fielder.defense %></span>
       </div>
     </div>
     <div class="d-flex justify-content-start row border border-3 border-white rounded p-1 pawa-bg-main">
@@ -61,8 +63,8 @@
         <div class="pawa-ability-label">捕球</div>
       </div>
       <div class="col-7 ps-3 py-2">
-        <span class="pawa-text-d me-2 h5">D</span>
-        <span class="h5">54</span>
+        <span class="me-2 h5"><%= display_alphabet(@player.pawapuro_fielder.catching) %></span>
+        <span class="h5"><%= @player.pawapuro_fielder.catching %></span>
       </div>
     </div>
   </div>
@@ -74,7 +76,7 @@
           <div class="pawa-ability-label">氏名</div>
         </div>
         <div class="ps-3 py-2">
-          <span class="h5">吉田　正尚</span>
+          <span class="h5"><%= "#{@player.last_name}　#{@player.first_name}" %></span>
         </div>
       </div>
       <div class="col-5 d-flex justify-content-start border border-3 border-white rounded p-1 mb-1 pawa-bg-main">
@@ -82,7 +84,7 @@
           <div class="pawa-ability-label">背ネーム</div>
         </div>
         <div class="ps-3 py-2">
-          <span class="h5">YOSIDA</span>
+          <span class="h5"><%= @player.back_name %></span>
         </div>
       </div>
     </div>
@@ -92,7 +94,7 @@
           <div class="pawa-ability-label">誕生日</div>
         </div>
         <div class="ps-3 py-2">
-          <span class="h5">1993年　7月15日</span>
+          <span class="h5"><%= @player.birthday.strftime('%Y年 %-m月%d日') %></span>
         </div>
       </div>
       <div class="col-5 d-flex justify-content-start border border-3 border-white rounded p-1 mb-1 pawa-bg-main">
@@ -100,7 +102,7 @@
           <div class="pawa-ability-label">年齢</div>
         </div>
         <div class="ps-3 py-2">
-          <span class="h5">29歳</span>
+          <span class="h5"><%= calculate_age(@player.birthday) %>歳</span>
         </div>
       </div>
     </div>
@@ -110,7 +112,7 @@
           <div class="pawa-ability-label">備考</div>
         </div>
         <div class="ps-3 py-2">
-          <span class="h5">ボストンのムキムキマッチョマン。</span>
+          <span class="h5"><%= @player.note %></span>
         </div>
       </div>
     </div>
