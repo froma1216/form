@@ -62,4 +62,13 @@ module PawapuroHelper
       content_tag(:span, "ERR ", class: "pawa-text-bad")
     end
   end
+
+  # 変化球ブロック
+  # 変化量によって、色付きのブロックを表示する。
+  def breaking_ball_blocks(pitcher, ball_type)
+    Array.new(7) do |i|
+      class_name = i < pitcher.send("#{ball_type}_type_movement") ? "pawa-breaking-block-exist" : "pawa-breaking-block-nil"
+      content_tag(:div, "", class: "col-1 #{class_name}")
+    end.join.html_safe
+  end
 end

@@ -30,94 +30,42 @@
       </div>
     </div>
     <div class="d-flex justify-content-start row border border-3 border-white rounded p-1 mb-1 pawa-bg-main">
-      <div class="col-12 ps-3">
+      <div class="col-12 ps-3 pb-2">
         <%# TODO: ストレート球種名のカラム追加 %>
         <%# ストレート %>
         <div class="pawa-breaking-font">ストレート・<%= @player.pawapuro_pitcher.second_fastball_type %></div>
         <div class="ms-3">
+          <%# 第一ストレート %>
           <div class="row">
-            <div class="col-1 pawa-breaking-block-exist border-bottom-0"></div>
+            <div class="col-1 pawa-breaking-block-exist"></div>
           </div>
           <%# 第二ストレート %>
           <div class="row">
-            <div class="col-1 pawa-breaking-block-second-exist"></div>
+            <% if @player.pawapuro_pitcher.second_fastball_type.present? %>
+              <div class="col-1 pawa-breaking-block-exist"></div>
+            <% end %>
           </div>
         </div>
         <%# スライダー系 %>
-        <div class="pawa-breaking-font"><%= @player.pawapuro_pitcher.slider_type_pitch %>・<%= @player.pawapuro_pitcher.second_slider_type_pitch %></div>
-        <div class="ms-3">
-          <div class="row">
-            <% 7.times do |i| %>
-              <div class="col-1 <%= 'pawa-breaking-block-exist' if i < @player.pawapuro_pitcher.slider_type_movement %> <%= 'pawa-breaking-block-nil' unless i < @player.pawapuro_pitcher.slider_type_movement %> border-bottom-0"></div>
-            <% end %>
-          </div>
-          <%# 第二スライダー系 %>
-          <div class="row">
-            <% 7.times do |i| %>
-              <div class="col-1 <%= 'pawa-breaking-block-second-exist' if i < @player.pawapuro_pitcher.second_slider_type_movement %> <%= 'pawa-breaking-block-second-nil' unless i < @player.pawapuro_pitcher.second_slider_type_movement %>"></div>
-            <% end %>
-          </div>
-        </div>
+        <% if @player.pawapuro_pitcher.slider_type_pitch.present? %>
+          <%= render partial: 'breaking_ball_meter', locals: { breaking_ball_type:"slider" } %>
+        <% end %>
         <%# カーブ系 %>
-        <div class="pawa-breaking-font"><%= @player.pawapuro_pitcher.curveball_type_pitch %>・<%= @player.pawapuro_pitcher.second_curveball_type_pitch %></div>
-        <div class="ms-3">
-          <div class="row">
-            <% 7.times do |i| %>
-              <div class="col-1 <%= 'pawa-breaking-block-exist' if i < @player.pawapuro_pitcher.curveball_type_movement %> <%= 'pawa-breaking-block-nil' unless i < @player.pawapuro_pitcher.curveball_type_movement %> border-bottom-0"></div>
-            <% end %>
-          </div>
-          <%# 第二カーブ系 %>
-          <div class="row">
-            <% 7.times do |i| %>
-              <div class="col-1 <%= 'pawa-breaking-block-second-exist' if i < @player.pawapuro_pitcher.second_curveball_type_movement %> <%= 'pawa-breaking-block-second-nil' unless i < @player.pawapuro_pitcher.second_curveball_type_movement %>"></div>
-            <% end %>
-          </div>
-        </div>
+        <% if @player.pawapuro_pitcher.curveball_type_pitch.present? %>
+          <%= render partial: 'breaking_ball_meter', locals: { breaking_ball_type:"curveball" } %>
+        <% end %>
         <%# シュート系 %>
-        <div class="pawa-breaking-font"><%= @player.pawapuro_pitcher.shootball_type_pitch %>・<%= @player.pawapuro_pitcher.second_shootball_type_pitch %></div>
-        <div class="ms-3">
-          <div class="row">
-            <% 7.times do |i| %>
-              <div class="col-1 <%= 'pawa-breaking-block-exist' if i < @player.pawapuro_pitcher.shootball_type_movement %> <%= 'pawa-breaking-block-nil' unless i < @player.pawapuro_pitcher.shootball_type_movement %> border-bottom-0"></div>
-            <% end %>
-          </div>
-          <%# 第二シュート系 %>
-          <div class="row">
-            <% 7.times do |i| %>
-              <div class="col-1 <%= 'pawa-breaking-block-second-exist' if i < @player.pawapuro_pitcher.second_shootball_type_movement %> <%= 'pawa-breaking-block-second-nil' unless i < @player.pawapuro_pitcher.second_shootball_type_movement %>"></div>
-            <% end %>
-          </div>
-        </div>
+        <% if @player.pawapuro_pitcher.shootball_type_pitch.present? %>
+          <%= render partial: 'breaking_ball_meter', locals: { breaking_ball_type:"shootball" } %>
+        <% end %>
         <%# シンカー系 %>
-        <div class="pawa-breaking-font"><%= @player.pawapuro_pitcher.sinker_type_pitch %>・<%= @player.pawapuro_pitcher.second_sinker_type_pitch %></div>
-        <div class="ms-3">
-          <div class="row">
-            <% 7.times do |i| %>
-              <div class="col-1 <%= 'pawa-breaking-block-exist' if i < @player.pawapuro_pitcher.sinker_type_movement %> <%= 'pawa-breaking-block-nil' unless i < @player.pawapuro_pitcher.sinker_type_movement %> border-bottom-0"></div>
-            <% end %>
-          </div>
-          <%# 第二シンカー系 %>
-          <div class="row">
-            <% 7.times do |i| %>
-              <div class="col-1 <%= 'pawa-breaking-block-second-exist' if i < @player.pawapuro_pitcher.second_sinker_type_movement %> <%= 'pawa-breaking-block-second-nil' unless i < @player.pawapuro_pitcher.second_sinker_type_movement %>"></div>
-            <% end %>
-          </div>
-        </div>
+        <% if @player.pawapuro_pitcher.sinker_type_pitch.present? %>
+          <%= render partial: 'breaking_ball_meter', locals: { breaking_ball_type:"sinker" } %>
+        <% end %>
         <%# フォーク系 %>
-        <div class="pawa-breaking-font"><%= @player.pawapuro_pitcher.forkball_type_pitch %>・<%= @player.pawapuro_pitcher.second_forkball_type_pitch %></div>
-        <div class="ms-3">
-          <div class="row">
-            <% 7.times do |i| %>
-              <div class="col-1 <%= 'pawa-breaking-block-exist' if i < @player.pawapuro_pitcher.forkball_type_movement %> <%= 'pawa-breaking-block-nil' unless i < @player.pawapuro_pitcher.forkball_type_movement %> border-bottom-0"></div>
-            <% end %>
-          </div>
-          <%# 第二フォーク系 %>
-          <div class="row">
-            <% 7.times do |i| %>
-              <div class="col-1 <%= 'pawa-breaking-block-second-exist' if i < @player.pawapuro_pitcher.second_forkball_type_movement %> <%= 'pawa-breaking-block-second-nil' unless i < @player.pawapuro_pitcher.second_forkball_type_movement %>"></div>
-            <% end %>
-          </div>
-        </div>
+        <% if @player.pawapuro_pitcher.forkball_type_pitch.present? %>
+          <%= render partial: 'breaking_ball_meter', locals: { breaking_ball_type:"forkball" } %>
+        <% end %>
       </div>
     </div>
   </div>
