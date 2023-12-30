@@ -22,7 +22,7 @@ module PawapuroHelper
       1 => "C",
       2 => "A"
     }
-    content_tag(:span, positions[val] || "ERR")
+    content_tag(:span, positions[val] || "")
   end
 
   # 能力値（弾道）によって文字色変更
