@@ -59,7 +59,7 @@ module PawapuroHelper
       content_tag(:span, "S ", class: "pawa-text-s")
     else
       # エラーケース
-      content_tag(:span, "ERR ", class: "pawa-text-bad")
+      content_tag(:span, "", class: "")
     end
   end
 

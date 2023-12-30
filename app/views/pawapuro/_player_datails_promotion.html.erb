@@ -7,8 +7,8 @@
         <div class="pawa-ability-label">走力</div>
       </div>
       <div class="col-7 ps-3 py-2">
-        <span class="pawa-text-d me-2 h5">D</span>
-        <span class="h5">53</span>
+        <span class="me-2 h5"><%= display_alphabet(@player.pawapuro_fielder.running) %></span>
+        <span class="h5"><%= @player.pawapuro_fielder.running %></span>
       </div>
     </div>
     <div class="d-flex justify-content-start row border border-3 border-white rounded p-1 mb-1 pawa-bg-main">
@@ -16,8 +16,8 @@
         <div class="pawa-ability-label">肩力</div>
       </div>
       <div class="col-7 ps-3 py-2">
-        <span class="pawa-text-f me-2 h5">F</span>
-        <span class="h5">39</span>
+        <span class="me-2 h5"><%= display_alphabet(@player.pawapuro_fielder.arm_strength) %></span>
+        <span class="h5"><%= @player.pawapuro_fielder.arm_strength %></span>
       </div>
     </div>
     <%# 各ポジション適正 %>
@@ -30,31 +30,26 @@
       <div class="col-6 ps-3 py-2 pawa-border-main border-bottom-0">
         <span class="pawa-text-neutral me-2 h5">投</span>
         <span class="h5 pawa-text-neutral">--</span>
+        <%# TODO: 投手ポジション適正を追加 %>
+        <%#= render partial: 'positional_appropriateness', locals: { position_name:"投" } %>
       </div>
       <div class="col-6 ps-3 py-3 pawa-border-main border-bottom-0 border-end-0">
-        <span class="pawa-text-neutral me-2 h5">捕</span>
-        <span class="h5 pawa-text-neutral">--</span>
+        <%= render partial: 'positional_appropriateness', locals: { position_name:"捕" } %>
       </div>
       <div class="col-6 ps-3 py-3 pawa-border-main border-bottom-0">
-        <span class="pawa-text-neutral me-2 h5">一</span>
-        <span class="h5 pawa-text-neutral">--</span>
+        <%= render partial: 'positional_appropriateness', locals: { position_name:"一" } %>
       </div>
       <div class="col-6 ps-3 py-3 pawa-border-main border-bottom-0 border-end-0">
-        <span class="pawa-text-neutral me-2 h5">二</span>
-        <span class="h5 pawa-text-neutral">--</span>
+        <%= render partial: 'positional_appropriateness', locals: { position_name:"二" } %>
       </div>
       <div class="col-6 ps-3 py-3 pawa-border-main border-bottom-0">
-        <span class="pawa-text-neutral me-2 h5">三</span>
-        <span class="h5 pawa-text-neutral">--</span>
+        <%= render partial: 'positional_appropriateness', locals: { position_name:"三" } %>
       </div>
       <div class="col-6 ps-3 py-2 pawa-border-main border-end-0">
-        <span class="pawa-text-neutral me-2 h5">遊</span>
-        <span class="h5 pawa-text-neutral">--</span>
+        <%= render partial: 'positional_appropriateness', locals: { position_name:"遊" } %>
       </div>
       <div class="col-6 ps-3 py-2 pawa-border-main">
-        <span class="pawa-text-neutral me-2 h5">外</span>
-        <span class="pawa-text-e me-2 h5">E</span>
-        <span class="h5">42</span>
+        <%= render partial: 'positional_appropriateness', locals: { position_name:"外" } %>
       </div>
     </div>
     <div class="d-flex justify-content-start row border border-3 border-white rounded p-1 pawa-bg-main">
@@ -62,8 +57,8 @@
         <div class="pawa-ability-label">捕球</div>
       </div>
       <div class="col-7 ps-3 py-2">
-        <span class="pawa-text-d me-2 h5">D</span>
-        <span class="h5">54</span>
+        <span class="me-2 h5"><%= display_alphabet(@player.pawapuro_fielder.catching) %></span>
+        <span class="h5"><%= @player.pawapuro_fielder.catching %></span>
       </div>
     </div>
   </div>
@@ -113,137 +108,18 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col fs-3 pawa-bg-sa-g1 rounded">
-        <div class="row p-1 text-center">
-          <span class="col-12 pawa-bg-sa-g2 rounded pawa-text-good tighter-letter-spacing">国際大会◯</span>
-        </div>
+    <%# 値なし %>
+    <% abilities_array = @player.other_special_abilities.split(',') %>
+    <% 6.times do |row| %>
+      <div class="row">
+        <% (row*4...row*4+4).each do |index| %>
+          <% if abilities_array[index] %>
+            <%= render partial: 'special_ability_no_value_box', locals: { ability: abilities_array[index] } %>
+          <% else %>
+            <%= render partial: 'special_ability_no_value_box', locals: { ability: '' } %>
+          <% end %>
+        <% end %>
       </div>
-      <div class="col fs-3 pawa-bg-sa-sb1 rounded">
-        <div class="row p-1 text-center">
-          <span class="col-12 pawa-bg-sa-sb2 rounded pawa-text-sub">慎重打法</span>
-        </div>
-      </div>
-      <div class="col fs-3 pawa-bg-sa-sb1 rounded">
-        <div class="row p-1 text-center">
-          <span class="col-12 pawa-bg-sa-sb2 rounded pawa-text-sub">積極走塁</span>
-        </div>
-      </div>
-      <div class="col fs-3 pawa-bg-sa-n1 rounded">
-        <div class="row p-1 text-center">
-          <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col fs-3 pawa-bg-sa-n1 rounded">
-        <div class="row p-1 text-center">
-          <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-        </div>
-      </div>
-      <div class="col fs-3 pawa-bg-sa-n1 rounded">
-        <div class="row p-1 text-center">
-          <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-        </div>
-      </div>
-      <div class="col fs-3 pawa-bg-sa-n1 rounded">
-        <div class="row p-1 text-center">
-          <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-        </div>
-      </div>
-      <div class="col fs-3 pawa-bg-sa-n1 rounded">
-        <div class="row p-1 text-center">
-          <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col fs-3 pawa-bg-sa-n1 rounded">
-        <div class="row p-1 text-center">
-          <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-        </div>
-      </div>
-      <div class="col fs-3 pawa-bg-sa-n1 rounded">
-        <div class="row p-1 text-center">
-          <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-        </div>
-      </div>
-      <div class="col fs-3 pawa-bg-sa-n1 rounded">
-        <div class="row p-1 text-center">
-          <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-        </div>
-      </div>
-      <div class="col fs-3 pawa-bg-sa-n1 rounded">
-        <div class="row p-1 text-center">
-          <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col fs-3 pawa-bg-sa-n1 rounded">
-        <div class="row p-1 text-center">
-          <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-        </div>
-      </div>
-      <div class="col fs-3 pawa-bg-sa-n1 rounded">
-        <div class="row p-1 text-center">
-          <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-        </div>
-      </div>
-      <div class="col fs-3 pawa-bg-sa-n1 rounded">
-        <div class="row p-1 text-center">
-          <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-        </div>
-      </div>
-      <div class="col fs-3 pawa-bg-sa-n1 rounded">
-        <div class="row p-1 text-center">
-          <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col fs-3 pawa-bg-sa-n1 rounded">
-        <div class="row p-1 text-center">
-          <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-        </div>
-      </div>
-      <div class="col fs-3 pawa-bg-sa-n1 rounded">
-        <div class="row p-1 text-center">
-          <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-        </div>
-      </div>
-      <div class="col fs-3 pawa-bg-sa-n1 rounded">
-        <div class="row p-1 text-center">
-          <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-        </div>
-      </div>
-      <div class="col fs-3 pawa-bg-sa-n1 rounded">
-        <div class="row p-1 text-center">
-          <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col fs-3 pawa-bg-sa-n1 rounded">
-        <div class="row p-1 text-center">
-          <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-        </div>
-      </div>
-      <div class="col fs-3 pawa-bg-sa-n1 rounded">
-        <div class="row p-1 text-center">
-          <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-        </div>
-      </div>
-      <div class="col fs-3 pawa-bg-sa-n1 rounded">
-        <div class="row p-1 text-center">
-          <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-        </div>
-      </div>
-      <div class="col fs-3 pawa-bg-sa-n1 rounded">
-        <div class="row p-1 text-center">
-          <span class="col-12 pawa-bg-sa-n2 rounded pawa-text-neutral">&nbsp;</span>
-        </div>
-      </div>
-    </div>
+    <% end %>
   </div>
 </div>
