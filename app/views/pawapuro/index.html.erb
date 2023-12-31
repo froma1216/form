@@ -64,10 +64,9 @@
           <%# TODO: サブポジも表示 %>
           <td class="align-middle"><strong><%= display_position_name(player.main_position) %></strong></td>
           <td class="align-middle"><%= player.throws %>投<%= player.bats %>打</td>
-          <%# TODO: 値によって角度を変える %>
           <td class="align-middle">
-            <span class="pawa-text-a me-2 h5"><i class="fa fa-solid fa-arrow-right"></i></span>
-            <%= display_trajectory(player.pawapuro_fielder.trajectory) %>
+            <span class="me-2 h5"><%= display_trajectory(player.pawapuro_fielder.trajectory) %></span>
+            <%= player.pawapuro_fielder.trajectory %>
           </td>
           <td class="align-middle">
             <%= display_alphabet(player.pawapuro_fielder.meat) %>

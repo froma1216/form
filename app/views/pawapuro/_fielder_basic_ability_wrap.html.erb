@@ -4,8 +4,7 @@
     <div class="pawa-ability-label">弾道</div>
   </div>
   <div class="col-7 ps-3 py-2">
-    <%# TODO: 値によって角度を変える %>
-    <span class="pawa-text-a me-2 h5"><i class="fa fa-solid fa-arrow-right"></i></span>
+    <span class="pawa-text-a me-2 h5"><%= display_trajectory(@player.pawapuro_fielder.trajectory) %></span>
     <span class="h5"><%= @player.pawapuro_fielder.trajectory %></span>
   </div>
 </div>

@@ -25,17 +25,19 @@ module PawapuroHelper
     content_tag(:span, positions[val] || "")
   end
 
-  # 能力値（弾道）によって文字色変更
-  # TODO: ↗を表示し、値によって角度を変える
-  def display_trajectory(val)
-    class_name = case val
-                 when 1 then "pawa-text-d"
-                 when 2 then "pawa-text-c"
-                 when 3 then "pawa-text-b"
-                 when 4 then "pawa-text-a"
-                 else "pawa-text-bad"
-                 end
-    content_tag(:span, val.to_s, class: class_name)
+  # 能力値（弾道）によって文字色、→の角度を変更
+  def display_trajectory(trajectory)
+    text_color, angle = case trajectory
+    when 2
+      ["pawa-text-c", "-20deg"]
+    when 3
+      ["pawa-text-b", "-30deg"]
+    when 4
+      ["pawa-text-a", "-45deg"]
+    else
+      ["pawa-text-d", "-10deg"]
+    end
+    content_tag(:i, "", class: "fa fa-solid fa-arrow-right #{text_color}", style: "transform: rotate(#{angle});")
   end
 
   # 能力値（弾道以外）をアルファベットに変換＋文字色変更
