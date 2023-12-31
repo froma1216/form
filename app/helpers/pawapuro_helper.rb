@@ -65,6 +65,29 @@ module PawapuroHelper
     end
   end
 
+  # ポジション表示
+  # 2 から 7 までの数値をループ。
+  # 各ループで、動的に sub_position_2, sub_position_3, ..., sub_position_7 の値を取得。
+  # sub_position が0ではなく、かつその数値が main_position と異なる場合にのみ、そのポジションを表示用の配列に追加。
+  # メインポジションは、太字で確定表示。
+  # 最終的に、配列内の要素を「・」で結合して返却。
+  def display_positions(player)
+    positions = ["<strong>#{display_position_name(player.main_position)}</strong>"]
+
+    (2..7).each do |num|
+      sub_position = player.send("sub_position_#{num}")
+      if sub_position.to_i.nonzero? && num != player.main_position
+        positions << display_position_name(num)
+      end
+    end
+    positions.join('・').html_safe
+  end
+
+  # 属性名から位置番号を抽出（上記のdisplay_sub_positionsで使用）
+  def position_number(attribute)
+    attribute[-1].to_i
+  end
+
   # 変化球ブロック
   # 変化量によって、色付きのブロックを表示する。
   def breaking_ball_blocks(pitcher, ball_type)

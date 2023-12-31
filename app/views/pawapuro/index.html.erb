@@ -61,8 +61,7 @@
         <tr>
           <th scope="row" class="align-middle">1</th>
           <td class="align-middle"><%= player.player_name %></td>
-          <%# TODO: サブポジも表示 %>
-          <td class="align-middle"><strong><%= display_position_name(player.main_position) %></strong></td>
+          <td class="align-middle"><%= display_positions(player) %></td>
           <td class="align-middle"><%= player.throws %>投<%= player.bats %>打</td>
           <td class="align-middle">
             <span class="me-2 h5"><%= display_trajectory(player.pawapuro_fielder.trajectory) %></span>
