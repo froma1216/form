@@ -70,61 +70,55 @@
       </div>
       <%# メイン %>
       <div class="mb-3">
-        <label class="form-label">メインポジション</label>
-        <%# TODO: 投手と野手をラジオで選択できるように %>
-        <select class="form-select" aria-label="Default select example">
-          <%# ラジオで投手を選択 %>
-          <option value="10">先発</option>
-          <option value="11">中継ぎ</option>
-          <option value="12">抑え</option>
-          <%# ラジオで野手を選択 %>
-          <option value="3">一塁手</option>
-          <option value="4">二塁手</option>
-          <option value="5">三塁手</option>
-          <option value="6">遊撃手</option>
-          <option value="7">外野手</option>
-        </select>
+        <%= f.label :main_position, "メインポジション", class: "form-label" %>
+        <%= f.select :main_position, [["先発", 10], ["中継ぎ", 11], ["抑え", 12], ["捕手", 2], ["一塁手", 3], ["二塁手", 4], ["三塁手", 5], ["遊撃手", 6], ["外野手", 7]], {include_blank: "選択して下さい"}, {class: "form-select"} %>
       </div>
       <%# サブ %>
       <div class="mb-3">
         <label class="form-label">サブポジション</label>
-        <%# FIXME: メインポジションで選択しているポジションは非活性 %>
+        <%# FIXME: メインポジションで選択しているポジションは、自動で3を入力 %>
         <%# 投手 %>
-        <div class="row">
-          <div class="col-4">
-            <label class="form-label small">先発</label>
-            <input type="number" class="form-control" name="先発" value="0">
+        <%= f.fields_for :pawapuro_pitcher do |pitcher_f| %>
+          <div class="row">
+            <div class="col-4">
+              <%= pitcher_f.label :starter_proper, "先発", class: "form-label small" %>
+              <%= pitcher_f.number_field :starter_proper, class: "form-control", name: "先発", value: 0, min: 0, max: 3 %>
+            </div>
+            <div class="col-4">
+              <%= pitcher_f.label :reliever_proper, "中継ぎ", class: "form-label small" %>
+              <%= pitcher_f.number_field :reliever_proper, class: "form-control", name: "中継ぎ", value: 0, min: 0, max: 3 %>
+            </div>
+            <div class="col-4">
+              <%= pitcher_f.label :closer_proper, "抑え", class: "form-label small" %>
+              <%= pitcher_f.number_field :closer_proper, class: "form-control", name: "抑え", value: 0, min: 0, max: 3 %>
+            </div>
           </div>
-          <div class="col-4">
-            <label class="form-label small">中継ぎ</label>
-            <input type="number" class="form-control" name="中継ぎ" value="0">
-          </div>
-          <div class="col-4">
-            <label class="form-label small">抑え</label>
-            <input type="number" class="form-control" name="抑え" value="0">
-          </div>
-        </div>
+        <% end %>
         <%# 野手 %>
         <div class="row">
           <div class="col">
-            <label class="form-label small">一塁手</label>
-            <input type="number" class="form-control" name="一塁手" value="0">
+            <%= f.label :sub_position_2, "捕手", class: "form-label small" %>
+            <%= f.number_field :sub_position_2, class: "form-control", name: "捕手", value: 0, min: 0, max: 3 %>
           </div>
           <div class="col">
-            <label class="form-label small">二塁手</label>
-            <input type="number" class="form-control" name="二塁手" value="0">
+            <%= f.label :sub_position_3, "一塁手", class: "form-label small" %>
+            <%= f.number_field :sub_position_3, class: "form-control", name: "一塁手", value: 0, min: 0, max: 3 %>
           </div>
           <div class="col">
-            <label class="form-label small">三塁手</label>
-            <input type="number" class="form-control" name="三塁手" value="0">
+            <%= f.label :sub_position_4, "二塁手", class: "form-label small" %>
+            <%= f.number_field :sub_position_4, class: "form-control", name: "二塁手", value: 0, min: 0, max: 3 %>
           </div>
           <div class="col">
-            <label class="form-label small">遊撃手</label>
-            <input type="number" class="form-control" name="遊撃手" value="0">
+            <%= f.label :sub_position_5, "三塁手", class: "form-label small" %>
+            <%= f.number_field :sub_position_5, class: "form-control", name: "三塁手", value: 0, min: 0, max: 3 %>
           </div>
           <div class="col">
-            <label class="form-label small">外野手</label>
-            <input type="number" class="form-control" name="外野手" value="0">
+            <%= f.label :sub_position_6, "遊撃手", class: "form-label small" %>
+            <%= f.number_field :sub_position_6, class: "form-control", name: "遊撃手", value: 0, min: 0, max: 3 %>
+          </div>
+          <div class="col">
+            <%= f.label :sub_position_7, "外野手", class: "form-label small" %>
+            <%= f.number_field :sub_position_7, class: "form-control", name: "外野手", value: 0, min: 0, max: 3 %>
           </div>
         </div>
       </div>
@@ -137,36 +131,44 @@
           <div class="col row">
             <div class="col-4 d-flex align-items-center">
               <%# TODO: アイコンつけて、注意文言を表示「金特「ガソリンタンク」は投手にのみ影響します。」 %>
-              <label class="form-label small mb-0">回復</label>
+              <%= f.label :kaifuku, "回復", class: "form-label small mb-0" %>
             </div>
             <div class="col-8">
-              <select class="form-select" aria-label="Default select example">
-                <option value="4" class="pawa-bg-sa-sp2">ガソリンタンク</option>
-                <option value="3" class="pawa-bg-sa-g2">A</option>
-                <option value="2" class="pawa-bg-sa-g2">B</option>
-                <option value="1" class="bg-white">C</option>
-                <option value="0" class="bg-white" selected>D</option>
-                <option value="-1" class="bg-white">E</option>
-                <option value="-2" class="pawa-bg-sa-b2">F</option>
-                <option value="-3" class="pawa-bg-sa-b2">G</option>
-              </select>
+              <%= f.select :kaifuku, 
+                options_for_select([
+                    ["ガソリンタンク", 4, {class: "pawa-bg-sa-sp2"}],
+                    ["A", 3, {class: "pawa-bg-sa-g2"}],
+                    ["B", 2, {class: "pawa-bg-sa-g2"}],
+                    ["C", 1, {class: "bg-white"}],
+                    ["D", 0, {class: "bg-white", selected: true}],
+                    ["E", -1, {class: "bg-white"}],
+                    ["F", -2, {class: "pawa-bg-sa-b2"}],
+                    ["G", -3, {class: "pawa-bg-sa-b2"}]
+                ]), 
+                {}, 
+                { class: "form-select", id: "kaifuku-select" } 
+              %>
             </div>
           </div>
           <div class="col row">
             <div class="col-4 d-flex align-items-center">
-              <label class="form-label small mb-0">ケガしにくさ</label>
+              <%= f.label :kegasinikusa, "ケガしにくさ", class: "form-label small mb-0" %>
             </div>
             <div class="col-8">
-              <select class="form-select" aria-label="Default select example">
-                <option value="4" class="pawa-bg-sa-sp2">鉄人</option>
-                <option value="3" class="pawa-bg-sa-g2">A</option>
-                <option value="2" class="pawa-bg-sa-g2">B</option>
-                <option value="1" class="bg-white">C</option>
-                <option value="0" class="bg-white" selected>D</option>
-                <option value="-1" class="bg-white">E</option>
-                <option value="-2" class="pawa-bg-sa-b2">F</option>
-                <option value="-3" class="pawa-bg-sa-b2">G</option>
-              </select>
+              <%= f.select :kegasinikusa, 
+                options_for_select([
+                    ["鉄人", 4, {class: "pawa-bg-sa-sp2"}],
+                    ["A", 3, {class: "pawa-bg-sa-g2"}],
+                    ["B", 2, {class: "pawa-bg-sa-g2"}],
+                    ["C", 1, {class: "bg-white"}],
+                    ["D", 0, {class: "bg-white", selected: true}],
+                    ["E", -1, {class: "bg-white"}],
+                    ["F", -2, {class: "pawa-bg-sa-b2"}],
+                    ["G", -3, {class: "pawa-bg-sa-b2"}]
+                ]), 
+                {}, 
+                { class: "form-select", id: "kegasinikusa-select" } 
+              %>
             </div>
           </div>
           <div class="col row"></div>
@@ -2324,3 +2326,26 @@
     </form>
   <% end %>
 </div>
+<%# FIXME: 外部ファイルに切り出し %>
+<script>
+  // 回復select
+  document.addEventListener('DOMContentLoaded', function () {
+      var selectBox = document.getElementById('kaifuku-select');
+
+      selectBox.addEventListener('change', function () {
+          // 現在の選択肢のクラスを取得
+          var selectedOptionClass = this.options[this.selectedIndex].className;
+
+          // セレクトボックスのクラスを更新
+          this.className = 'form-select ' + selectedOptionClass;
+      });
+  });
+  // ケガしにくさselect
+  document.addEventListener('DOMContentLoaded', function () {
+      var selectBox = document.getElementById('kegasinikusa-select');
+      selectBox.addEventListener('change', function () {
+          var selectedOptionClass = this.options[this.selectedIndex].className;
+          this.className = 'form-select ' + selectedOptionClass;
+      });
+  });
+</script>
