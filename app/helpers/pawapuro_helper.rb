@@ -13,16 +13,26 @@ module PawapuroHelper
     content_tag(:span, positions[val] || "ERR")
   end
 
-  # 数値をアルファベットに変換
-  def display_apecial_ability_alphabet(val)
-    positions = {
+  # 特能数値をアルファベットに変換
+  def display_special_ability_alphabet(val)
+    abilities = {
       -2 => "F",
       -1 => "E",
       0 => "D",
       1 => "C",
       2 => "A"
     }
-    content_tag(:span, positions[val] || "")
+    content_tag(:span, abilities[val] || "")
+  end
+
+  # 投打の値を右・左・両に変換
+  def display_left_and_right(val)
+    throws_bats = {
+      "right" => "右",
+      "left" => "左",
+      "both" => "両",
+    }
+    content_tag(:span, throws_bats[val] || "")
   end
 
   # 能力値（弾道）によって文字色、→の角度を変更

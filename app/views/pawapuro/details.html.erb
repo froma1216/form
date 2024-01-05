@@ -37,7 +37,7 @@
             <div class="pawa-ability-label">投打</div>
           </div>
           <span class="ms-1">
-            <strong><%= @player.throws %>投<%= @player.bats %>打</strong>
+            <strong><%= display_left_and_right(@player.throws) %>投<%= display_left_and_right(@player.bats) %>打</strong>
           </span>
         </div>
       </div>
