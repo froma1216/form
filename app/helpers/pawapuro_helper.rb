@@ -67,7 +67,7 @@ module PawapuroHelper
       content_tag(:span, "B ", class: "pawa-text-b")
     when 80..89
       content_tag(:span, "A ", class: "pawa-text-a")
-    when 90..99
+    when 90..100
       content_tag(:span, "S ", class: "pawa-text-s")
     else
       # エラーケース

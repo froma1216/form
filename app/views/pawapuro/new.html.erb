@@ -304,7 +304,6 @@
         <div class="h4 pb-2 mb-2 text-primary border-bottom border-primary">
           投手基本能力
         </div>
-        <%# FIXME: 野手選択時は、初期値をオール1に設定 %>
         <div class="mb-3">
           <%# 基本能力 %>
           <div class="mb-3">
@@ -313,23 +312,23 @@
               <div class="col-4">
                 <%= pitcher_f.label :pace, "球速", class: "form-label" %>
                 <div class="input-group">
-                  <%= pitcher_f.number_field :pace, class: "form-control", value: "120" %>
+                  <%= pitcher_f.number_field :pace, class: "form-control", value: "120", min: 120, max: 170 %>
                   <span class="input-group-text">km/h</span>
                 </div>
               </div>
               <div class="col-4">
-                <label class="form-label">コントロール</label>
+                <%= pitcher_f.label :control, "コントロール", class: "form-label" %>
                 <div class="input-group">
-                  <input type="number" class="form-control" value="1">
+                  <%= pitcher_f.number_field :control, class: "form-control", id:"control-input", value: "1", min: 1, max: 100 %>
                   <%# TODO: inputの値によって英字、背景色を変化させる %>
-                  <span class="input-group-text text-white pawa-bg-g">G</span>
+                  <span class="input-group-text text-white pawa-bg-g" id="control-alphabet-display">G</span>
                 </div>
               </div>
               <div class="col-4">
-                <label class="form-label">スタミナ</label>
+                <%= pitcher_f.label :stamina, "スタミナ", class: "form-label" %>
                 <div class="input-group">
-                  <input type="number" class="form-control" value="1">
-                  <span class="input-group-text text-white pawa-bg-g">G</span>
+                  <%= pitcher_f.number_field :stamina, class: "form-control", id:"stamina-input", value: "1", min: 1, max: 100 %>
+                  <span class="input-group-text text-white pawa-bg-g" id="stamina-alphabet-display">G</span>
                 </div>
               </div>
             </div>
@@ -2326,26 +2325,3 @@
     </form>
   <% end %>
 </div>
-<%# FIXME: 外部ファイルに切り出し %>
-<script>
-  // 回復select
-  document.addEventListener('DOMContentLoaded', function () {
-      var selectBox = document.getElementById('kaifuku-select');
-
-      selectBox.addEventListener('change', function () {
-          // 現在の選択肢のクラスを取得
-          var selectedOptionClass = this.options[this.selectedIndex].className;
-
-          // セレクトボックスのクラスを更新
-          this.className = 'form-select ' + selectedOptionClass;
-      });
-  });
-  // ケガしにくさselect
-  document.addEventListener('DOMContentLoaded', function () {
-      var selectBox = document.getElementById('kegasinikusa-select');
-      selectBox.addEventListener('change', function () {
-          var selectedOptionClass = this.options[this.selectedIndex].className;
-          this.className = 'form-select ' + selectedOptionClass;
-      });
-  });
-</script>
