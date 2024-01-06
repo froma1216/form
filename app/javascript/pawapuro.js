@@ -16,6 +16,28 @@ document.addEventListener("DOMContentLoaded", function () {
   setupSelectBox("kaifuku-select");
   // ケガしにくさ
   setupSelectBox("kegasinikusa-select");
+  // 対ピンチ
+  setupSelectBox("taipinch-select");
+  // 対左打者
+  setupSelectBox("taihidaridasya-select");
+  // 打たれ強さ
+  setupSelectBox("utarezuyosa-select");
+  // ノビ
+  setupSelectBox("nobi-select");
+  // クイック
+  setupSelectBox("quick-select");
+  // チャンス
+  setupSelectBox("chance-select");
+  // 対左投手
+  setupSelectBox("taihidaritousyu-select");
+  // キャッチャー
+  setupSelectBox("catcher-select");
+  // 盗塁
+  setupSelectBox("tourui-select");
+  // 走塁
+  setupSelectBox("sourui-select");
+  // 送球
+  setupSelectBox("soukyuu-select");
 });
 
 // 基礎能力入力（入力値でアルファベット＋背景色を変更）
@@ -72,4 +94,16 @@ document.addEventListener("DOMContentLoaded", function () {
   setupInputField("control-input", "control-alphabet-display");
   // スタミナ
   setupInputField("stamina-input", "stamina-alphabet-display");
+  // ミート
+  setupInputField("meat-input", "meat-alphabet-display");
+  // パワー
+  setupInputField("power-input", "power-alphabet-display");
+  // 走力
+  setupInputField("running-input", "running-alphabet-display");
+  // 肩力
+  setupInputField("arm_strength-input", "arm_strength-alphabet-display");
+  // 守備力
+  setupInputField("defense-input", "defense-alphabet-display");
+  // 捕球
+  setupInputField("catching-input", "catching-alphabet-display");
 });

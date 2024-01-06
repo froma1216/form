@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_19_131442) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_06_072300) do
   create_table "e_frontier_alls", force: :cascade do |t|
     t.integer "no"
     t.string "name"
@@ -61,6 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_19_131442) do
     t.string "updated_by"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "catcher"
   end
 
   create_table "pawapuro_pitchers", force: :cascade do |t|

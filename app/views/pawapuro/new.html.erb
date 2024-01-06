@@ -564,92 +564,111 @@
           <div class="row mb-2">
             <div class="col row">
               <div class="col-4 d-flex align-items-center">
-                <label class="form-label small mb-0">対ピンチ</label>
+                <%= pitcher_f.label :taipinch, "対ピンチ", class: "form-label small mb-0" %>
               </div>
               <div class="col-8">
-                <%# FIXME: セレクトの背景色を選んだ値の背景色に合わせる %>
-                <select class="form-select pawa-bg-sa-g2" aria-label="Default select example">
-                  <option value="4" class="pawa-bg-sa-sp2">強心臓</option>
-                  <option value="3" class="pawa-bg-sa-g2">A</option>
-                  <option value="2" class="pawa-bg-sa-g2">B</option>
-                  <option value="1" class="bg-white">C</option>
-                  <option value="0" class="bg-white" selected>D</option>
-                  <option value="-1" class="bg-white">E</option>
-                  <option value="-2" class="pawa-bg-sa-b2">F</option>
-                  <option value="-3" class="pawa-bg-sa-b2">G</option>
-                  <option value="-4" class="pawa-bg-sa-b2">ノミの心臓</option>
-                </select>
+                <%= pitcher_f.select :taipinch, 
+                  options_for_select([
+                      ["強心臓", 4, {class: "pawa-bg-sa-sp2"}],
+                      ["A", 3, {class: "pawa-bg-sa-g2"}],
+                      ["B", 2, {class: "pawa-bg-sa-g2"}],
+                      ["C", 1, {class: "bg-white"}],
+                      ["D", 0, {class: "bg-white", selected: true}],
+                      ["E", -1, {class: "bg-white"}],
+                      ["F", -2, {class: "pawa-bg-sa-b2"}],
+                      ["G", -3, {class: "pawa-bg-sa-b2"}],
+                      ["ノミの心臓", -4, {class: "pawa-bg-sa-b2"}]
+                  ]), 
+                  {}, 
+                  { class: "form-select", id: "taipinch-select" } 
+                %>
               </div>
             </div>
             <div class="col row">
               <div class="col-4 d-flex align-items-center">
-                <label class="form-label small mb-0">対左打者</label>
+                <%= pitcher_f.label :taihidaridasya, "対左打者", class: "form-label small mb-0" %>
               </div>
               <div class="col-8">
-                <select class="form-select" aria-label="Default select example">
-                  <option value="4" class="pawa-bg-sa-sp2">左キラー</option>
-                  <option value="3" class="pawa-bg-sa-g2">A</option>
-                  <option value="2" class="pawa-bg-sa-g2">B</option>
-                  <option value="1" class="bg-white">C</option>
-                  <option value="0" class="bg-white" selected>D</option>
-                  <option value="-1" class="bg-white">E</option>
-                  <option value="-2" class="pawa-bg-sa-b2">F</option>
-                  <option value="-3" class="pawa-bg-sa-b2">G</option>
-                </select>
+                <%= pitcher_f.select :taihidaridasya, 
+                  options_for_select([
+                      ["左キラー", 4, {class: "pawa-bg-sa-sp2"}],
+                      ["A", 3, {class: "pawa-bg-sa-g2"}],
+                      ["B", 2, {class: "pawa-bg-sa-g2"}],
+                      ["C", 1, {class: "bg-white"}],
+                      ["D", 0, {class: "bg-white", selected: true}],
+                      ["E", -1, {class: "bg-white"}],
+                      ["F", -2, {class: "pawa-bg-sa-b2"}],
+                      ["G", -3, {class: "pawa-bg-sa-b2"}],
+                  ]), 
+                  {}, 
+                  { class: "form-select", id: "taihidaridasya-select" } 
+                %>
               </div>
             </div>
             <div class="col row">
               <div class="col-4 d-flex align-items-center">
-                <label class="form-label small mb-0">打たれ強さ</label>
+                <%= pitcher_f.label :utarezuyosa, "打たれ強さ", class: "form-label small mb-0" %>
               </div>
               <div class="col-8">
-                <select class="form-select" aria-label="Default select example">
-                  <option value="4" class="pawa-bg-sa-sp2">不屈の魂</option>
-                  <option value="3" class="pawa-bg-sa-g2">A</option>
-                  <option value="2" class="pawa-bg-sa-g2">B</option>
-                  <option value="1" class="bg-white">C</option>
-                  <option value="0" class="bg-white" selected>D</option>
-                  <option value="-1" class="bg-white">E</option>
-                  <option value="-2" class="pawa-bg-sa-b2">F</option>
-                  <option value="-3" class="pawa-bg-sa-b2">G</option>
-                  <option value="-4" class="pawa-bg-sa-b2">ガラスのハート</option>
-                </select>
+                <%= pitcher_f.select :utarezuyosa, 
+                  options_for_select([
+                      ["不屈の魂", 4, {class: "pawa-bg-sa-sp2"}],
+                      ["A", 3, {class: "pawa-bg-sa-g2"}],
+                      ["B", 2, {class: "pawa-bg-sa-g2"}],
+                      ["C", 1, {class: "bg-white"}],
+                      ["D", 0, {class: "bg-white", selected: true}],
+                      ["E", -1, {class: "bg-white"}],
+                      ["F", -2, {class: "pawa-bg-sa-b2"}],
+                      ["G", -3, {class: "pawa-bg-sa-b2"}],
+                      ["ガラスのハート", -4, {class: "pawa-bg-sa-b2"}],
+                  ]), 
+                  {}, 
+                  { class: "form-select", id: "utarezuyosa-select" } 
+                %>
               </div>
             </div>
           </div>
           <div class="row mb-2">
             <div class="col row">
               <div class="col-4 d-flex align-items-center">
-                <label class="form-label small mb-0">ノビ</label>
+                <%= pitcher_f.label :nobi, "ノビ", class: "form-label small mb-0" %>
               </div>
               <div class="col-8">
-                <select class="form-select" aria-label="Default select example">
-                  <option value="4" class="pawa-bg-sa-sp2">怪童</option>
-                  <option value="3" class="pawa-bg-sa-g2">A</option>
-                  <option value="2" class="pawa-bg-sa-g2">B</option>
-                  <option value="1" class="bg-white">C</option>
-                  <option value="0" class="bg-white" selected>D</option>
-                  <option value="-1" class="bg-white">E</option>
-                  <option value="-2" class="pawa-bg-sa-b2">F</option>
-                  <option value="-3" class="pawa-bg-sa-b2">G</option>
-                </select>
+                <%= pitcher_f.select :nobi, 
+                  options_for_select([
+                      ["怪童", 4, {class: "pawa-bg-sa-sp2"}],
+                      ["A", 3, {class: "pawa-bg-sa-g2"}],
+                      ["B", 2, {class: "pawa-bg-sa-g2"}],
+                      ["C", 1, {class: "bg-white"}],
+                      ["D", 0, {class: "bg-white", selected: true}],
+                      ["E", -1, {class: "bg-white"}],
+                      ["F", -2, {class: "pawa-bg-sa-b2"}],
+                      ["G", -3, {class: "pawa-bg-sa-b2"}],
+                  ]), 
+                  {}, 
+                  { class: "form-select", id: "nobi-select" } 
+                %>
               </div>
             </div>
             <div class="col row">
               <div class="col-4 d-flex align-items-center">
-                <label class="form-label small mb-0">クイック</label>
+                <%= pitcher_f.label :quick, "クイック", class: "form-label small mb-0" %>
               </div>
               <div class="col-8">
-                <select class="form-select" aria-label="Default select example">
-                  <option value="4" class="pawa-bg-sa-sp2">走者釘付</option>
-                  <option value="3" class="pawa-bg-sa-g2">A</option>
-                  <option value="2" class="pawa-bg-sa-g2">B</option>
-                  <option value="1" class="bg-white">C</option>
-                  <option value="0" class="bg-white" selected>D</option>
-                  <option value="-1" class="bg-white">E</option>
-                  <option value="-2" class="pawa-bg-sa-b2">F</option>
-                  <option value="-3" class="pawa-bg-sa-b2">G</option>
-                </select>
+                <%= pitcher_f.select :quick, 
+                  options_for_select([
+                      ["走者釘付", 4, {class: "pawa-bg-sa-sp2"}],
+                      ["A", 3, {class: "pawa-bg-sa-g2"}],
+                      ["B", 2, {class: "pawa-bg-sa-g2"}],
+                      ["C", 1, {class: "bg-white"}],
+                      ["D", 0, {class: "bg-white", selected: true}],
+                      ["E", -1, {class: "bg-white"}],
+                      ["F", -2, {class: "pawa-bg-sa-b2"}],
+                      ["G", -3, {class: "pawa-bg-sa-b2"}],
+                  ]), 
+                  {}, 
+                  { class: "form-select", id: "quick-select" } 
+                %>
               </div>
             </div>
             <div class="col row"></div>
@@ -1213,12 +1232,10 @@
         <div class="h4 pb-2 mb-2 text-primary border-bottom border-primary">
           野手基本能力
         </div>
-        <%# FIXME: 野手選択時は、初期値をオール1に設定 %>
         <div class="mb-3">
           <div class="mb-3">
             <%# 基本能力 %>
             <div class="mb-3">
-              <%# FIXME: メインポジションで選択しているポジションは非活性 %>
               <div class="row">
                 <div class="col">
                   <label class="form-label">弾道</label>
@@ -1229,49 +1246,45 @@
                   </div>
                 </div>
                 <div class="col">
-                  <label class="form-label">ミート
-                  </label>
+                  <%= fielder_f.label :meat, "ミート", class: "form-label" %>
                   <div class="input-group">
-                    <%# <input type="number" class="form-control" value="1"> %>
-                    <%#= f.text_field :meat, type: "number", class: "form-control", value: "1" %>
-                    <%= fielder_f.number_field :meat, value: "1" %>
-                    <%# TODO: inputの値によって英字、背景色を変化させる %>
-                    <span class="input-group-text text-white pawa-bg-g">G</span>
+                    <%= fielder_f.number_field :meat, class: "form-control", id:"meat-input", value: "1", min: 1, max: 100 %>
+                    <span class="input-group-text text-white pawa-bg-g" id="meat-alphabet-display">G</span>
                   </div>
                 </div>
                 <div class="col">
-                  <label class="form-label">パワー</label>
+                  <%= fielder_f.label :power, "パワー", class: "form-label" %>
                   <div class="input-group">
-                    <input type="number" class="form-control" value="1">
-                    <span class="input-group-text text-white pawa-bg-g">G</span>
+                    <%= fielder_f.number_field :power, class: "form-control", id:"power-input", value: "1", min: 1, max: 100 %>
+                    <span class="input-group-text text-white pawa-bg-g" id="power-alphabet-display">G</span>
                   </div>
                 </div>
                 <div class="col">
-                  <label class="form-label">走力</label>
+                  <%= fielder_f.label :running, "走力", class: "form-label" %>
                   <div class="input-group">
-                    <input type="number" class="form-control" value="1">
-                    <span class="input-group-text text-white pawa-bg-g">G</span>
+                    <%= fielder_f.number_field :running, class: "form-control", id:"running-input", value: "1", min: 1, max: 100 %>
+                    <span class="input-group-text text-white pawa-bg-g" id="running-alphabet-display">G</span>
                   </div>
                 </div>
                 <div class="col">
-                  <label class="form-label">肩力</label>
+                  <%= fielder_f.label :arm_strength, "肩力", class: "form-label" %>
                   <div class="input-group">
-                    <input type="number" class="form-control" value="1">
-                    <span class="input-group-text text-white pawa-bg-g">G</span>
+                    <%= fielder_f.number_field :arm_strength, class: "form-control", id:"arm_strength-input", value: "1", min: 1, max: 100 %>
+                    <span class="input-group-text text-white pawa-bg-g" id="arm_strength-alphabet-display">G</span>
                   </div>
                 </div>
                 <div class="col">
-                  <label class="form-label">守備力</label>
+                  <%= fielder_f.label :defense, "守備力", class: "form-label" %>
                   <div class="input-group">
-                    <input type="number" class="form-control" value="1">
-                    <span class="input-group-text text-white pawa-bg-g">G</span>
+                    <%= fielder_f.number_field :defense, class: "form-control", id:"defense-input", value: "1", min: 1, max: 100 %>
+                    <span class="input-group-text text-white pawa-bg-g" id="defense-alphabet-display">G</span>
                   </div>
                 </div>
                 <div class="col">
-                  <label class="form-label">捕球</label>
+                  <%= fielder_f.label :catching, "捕球", class: "form-label" %>
                   <div class="input-group">
-                    <input type="number" class="form-control" value="1">
-                    <span class="input-group-text text-white pawa-bg-g">G</span>
+                    <%= fielder_f.number_field :catching, class: "form-control", id:"catching-input", value: "1", min: 1, max: 100 %>
+                    <span class="input-group-text text-white pawa-bg-g" id="catching-alphabet-display">G</span>
                   </div>
                 </div>
               </div>
@@ -1287,41 +1300,69 @@
           <div class="row mb-2">
             <div class="col row">
               <div class="col-4 d-flex align-items-center">
-                <label class="form-label small mb-0">チャンス</label>
+                <%= fielder_f.label :chance, "チャンス", class: "form-label small mb-0" %>
               </div>
               <div class="col-8">
-                <%# FIXME: セレクトの背景色を選んだ値の背景色に合わせる %>
-                <select class="form-select pawa-bg-sa-g2" aria-label="Default select example">
-                  <option value="4" class="pawa-bg-sa-sp2">勝負師</option>
-                  <option value="3" class="pawa-bg-sa-g2">A</option>
-                  <option value="2" class="pawa-bg-sa-g2">B</option>
-                  <option value="1" class="bg-white">C</option>
-                  <option value="0" class="bg-white" selected>D</option>
-                  <option value="-1" class="bg-white">E</option>
-                  <option value="-2" class="pawa-bg-sa-b2">F</option>
-                  <option value="-3" class="pawa-bg-sa-b2">G</option>
-                </select>
+                <%= fielder_f.select :chance, 
+                  options_for_select([
+                      ["勝負師", 4, {class: "pawa-bg-sa-sp2"}],
+                      ["A", 3, {class: "pawa-bg-sa-g2"}],
+                      ["B", 2, {class: "pawa-bg-sa-g2"}],
+                      ["C", 1, {class: "bg-white"}],
+                      ["D", 0, {class: "bg-white", selected: true}],
+                      ["E", -1, {class: "bg-white"}],
+                      ["F", -2, {class: "pawa-bg-sa-b2"}],
+                      ["G", -3, {class: "pawa-bg-sa-b2"}],
+                  ]), 
+                  {}, 
+                  { class: "form-select", id: "chance-select" } 
+                %>
               </div>
             </div>
             <div class="col row">
               <div class="col-4 d-flex align-items-center">
-                <label class="form-label small mb-0">対左投手</label>
+                <%= fielder_f.label :taihidaritousyu, "対左投手", class: "form-label small mb-0" %>
               </div>
               <div class="col-8">
-                <select class="form-select" aria-label="Default select example">
-                  <option value="4" class="pawa-bg-sa-sp2">左腕キラー</option>
-                  <option value="3" class="pawa-bg-sa-g2">A</option>
-                  <option value="2" class="pawa-bg-sa-g2">B</option>
-                  <option value="1" class="bg-white">C</option>
-                  <option value="0" class="bg-white" selected>D</option>
-                  <option value="-1" class="bg-white">E</option>
-                  <option value="-2" class="pawa-bg-sa-b2">F</option>
-                  <option value="-3" class="pawa-bg-sa-b2">G</option>
-                </select>
+                <%= fielder_f.select :taihidaritousyu, 
+                  options_for_select([
+                      ["左腕キラー", 4, {class: "pawa-bg-sa-sp2"}],
+                      ["A", 3, {class: "pawa-bg-sa-g2"}],
+                      ["B", 2, {class: "pawa-bg-sa-g2"}],
+                      ["C", 1, {class: "bg-white"}],
+                      ["D", 0, {class: "bg-white", selected: true}],
+                      ["E", -1, {class: "bg-white"}],
+                      ["F", -2, {class: "pawa-bg-sa-b2"}],
+                      ["G", -3, {class: "pawa-bg-sa-b2"}],
+                  ]), 
+                  {}, 
+                  { class: "form-select", id: "taihidaritousyu-select" } 
+                %>
               </div>
             </div>
             <%# TODO: ポジション（サブポジ含む）にキャッチャーがない場合は非活性 %>
             <div class="col row">
+              <div class="col-4 d-flex align-items-center">
+                <%= fielder_f.label :catcher, "キャッチャー", class: "form-label small mb-0" %>
+              </div>
+              <div class="col-8">
+                <%= fielder_f.select :catcher, 
+                  options_for_select([
+                      ["球界の頭脳", 4, {class: "pawa-bg-sa-sp2"}],
+                      ["A", 3, {class: "pawa-bg-sa-g2"}],
+                      ["B", 2, {class: "pawa-bg-sa-g2"}],
+                      ["C", 1, {class: "bg-white"}],
+                      ["D", 0, {class: "bg-white", selected: true}],
+                      ["E", -1, {class: "bg-white"}],
+                      ["F", -2, {class: "pawa-bg-sa-b2"}],
+                      ["G", -3, {class: "pawa-bg-sa-b2"}],
+                  ]), 
+                  {}, 
+                  { class: "form-select", id: "catcher-select" } 
+                %>
+              </div>
+            </div>
+            <%# <div class="col row">
               <div class="col-4 d-flex align-items-center">
                 <label class="form-label small mb-0">キャッチャー</label>
               </div>
@@ -1337,58 +1378,70 @@
                   <option value="-3" class="pawa-bg-sa-b2">G</option>
                 </select>
               </div>
-            </div>
+            </div> %>
           </div>
           <div class="row mb-2">
             <div class="col row">
               <div class="col-4 d-flex align-items-center">
-                <label class="form-label small mb-0">盗塁</label>
+                <%= fielder_f.label :tourui, "盗塁", class: "form-label small mb-0" %>
               </div>
               <div class="col-8">
-                <select class="form-select" aria-label="Default select example">
-                  <option value="4" class="pawa-bg-sa-sp2">電光石火</option>
-                  <option value="3" class="pawa-bg-sa-g2">A</option>
-                  <option value="2" class="pawa-bg-sa-g2">B</option>
-                  <option value="1" class="bg-white">C</option>
-                  <option value="0" class="bg-white" selected>D</option>
-                  <option value="-1" class="bg-white">E</option>
-                  <option value="-2" class="pawa-bg-sa-b2">F</option>
-                  <option value="-3" class="pawa-bg-sa-b2">G</option>
-                </select>
+                <%= fielder_f.select :tourui, 
+                  options_for_select([
+                      ["電光石火", 4, {class: "pawa-bg-sa-sp2"}],
+                      ["A", 3, {class: "pawa-bg-sa-g2"}],
+                      ["B", 2, {class: "pawa-bg-sa-g2"}],
+                      ["C", 1, {class: "bg-white"}],
+                      ["D", 0, {class: "bg-white", selected: true}],
+                      ["E", -1, {class: "bg-white"}],
+                      ["F", -2, {class: "pawa-bg-sa-b2"}],
+                      ["G", -3, {class: "pawa-bg-sa-b2"}],
+                  ]), 
+                  {}, 
+                  { class: "form-select", id: "tourui-select" } 
+                %>
               </div>
             </div>
             <div class="col row">
               <div class="col-4 d-flex align-items-center">
-                <label class="form-label small mb-0">走塁</label>
+                <%= fielder_f.label :sourui, "走塁", class: "form-label small mb-0" %>
               </div>
               <div class="col-8">
-                <select class="form-select" aria-label="Default select example">
-                  <option value="4" class="pawa-bg-sa-sp2">高速ベースラン</option>
-                  <option value="3" class="pawa-bg-sa-g2">A</option>
-                  <option value="2" class="pawa-bg-sa-g2">B</option>
-                  <option value="1" class="bg-white">C</option>
-                  <option value="0" class="bg-white" selected>D</option>
-                  <option value="-1" class="bg-white">E</option>
-                  <option value="-2" class="pawa-bg-sa-b2">F</option>
-                  <option value="-3" class="pawa-bg-sa-b2">G</option>
-                </select>
+                <%= fielder_f.select :sourui, 
+                  options_for_select([
+                      ["高速ベースラン", 4, {class: "pawa-bg-sa-sp2"}],
+                      ["A", 3, {class: "pawa-bg-sa-g2"}],
+                      ["B", 2, {class: "pawa-bg-sa-g2"}],
+                      ["C", 1, {class: "bg-white"}],
+                      ["D", 0, {class: "bg-white", selected: true}],
+                      ["E", -1, {class: "bg-white"}],
+                      ["F", -2, {class: "pawa-bg-sa-b2"}],
+                      ["G", -3, {class: "pawa-bg-sa-b2"}],
+                  ]), 
+                  {}, 
+                  { class: "form-select", id: "sourui-select" } 
+                %>
               </div>
             </div>
             <div class="col row">
               <div class="col-4 d-flex align-items-center">
-                <label class="form-label small mb-0">送球</label>
+                <%= fielder_f.label :soukyuu, "送球", class: "form-label small mb-0" %>
               </div>
               <div class="col-8">
-                <select class="form-select" aria-label="Default select example">
-                  <option value="4" class="pawa-bg-sa-sp2">ストライク送球</option>
-                  <option value="3" class="pawa-bg-sa-g2">A</option>
-                  <option value="2" class="pawa-bg-sa-g2">B</option>
-                  <option value="1" class="bg-white">C</option>
-                  <option value="0" class="bg-white" selected>D</option>
-                  <option value="-1" class="bg-white">E</option>
-                  <option value="-2" class="pawa-bg-sa-b2">F</option>
-                  <option value="-3" class="pawa-bg-sa-b2">G</option>
-                </select>
+                <%= fielder_f.select :soukyuu, 
+                  options_for_select([
+                      ["ストライク送球", 4, {class: "pawa-bg-sa-sp2"}],
+                      ["A", 3, {class: "pawa-bg-sa-g2"}],
+                      ["B", 2, {class: "pawa-bg-sa-g2"}],
+                      ["C", 1, {class: "bg-white"}],
+                      ["D", 0, {class: "bg-white", selected: true}],
+                      ["E", -1, {class: "bg-white"}],
+                      ["F", -2, {class: "pawa-bg-sa-b2"}],
+                      ["G", -3, {class: "pawa-bg-sa-b2"}],
+                  ]), 
+                  {}, 
+                  { class: "form-select", id: "soukyuu-select" } 
+                %>
               </div>
             </div>
           </div>
@@ -2313,12 +2366,12 @@
         その他
       </div>
       <div class="mb-3">
-        <label for="bikou" class="form-label">備考</label>
-        <textarea class="form-control" id="bikou" rows="3"></textarea>
+        <%= f.label :note, '備考', class: 'form-label' %>
+        <%= f.text_area :note, rows: 3, class: 'form-control', id: 'bikou' %>
       </div>
       <%# 検索ボタン %>
       <%# <input type="submit" class="btn btn-primary" value="登録する"> %>
-      <%= f.submit '投稿する', class: "btn btn-primary" %>
+      <%= f.submit '登録する', class: "btn btn-primary" %>
       <%# TODO: 登録前に確認画面に遷移させる %>
       <%#= link_to '入力内容確認画面へ', confirm_pawapuro_index_path, class: 'btn btn-primary' %>
       <%# TODO: クリアボタン %>
