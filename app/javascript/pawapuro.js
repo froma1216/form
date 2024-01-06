@@ -10,36 +10,7 @@ function setupSelectBox(selectBoxId) {
   });
 }
 
-// ページが読み込まれたときに関数を実行
-document.addEventListener("DOMContentLoaded", function () {
-  // 回復
-  setupSelectBox("kaifuku-select");
-  // ケガしにくさ
-  setupSelectBox("kegasinikusa-select");
-  // 対ピンチ
-  setupSelectBox("taipinch-select");
-  // 対左打者
-  setupSelectBox("taihidaridasya-select");
-  // 打たれ強さ
-  setupSelectBox("utarezuyosa-select");
-  // ノビ
-  setupSelectBox("nobi-select");
-  // クイック
-  setupSelectBox("quick-select");
-  // チャンス
-  setupSelectBox("chance-select");
-  // 対左投手
-  setupSelectBox("taihidaritousyu-select");
-  // キャッチャー
-  setupSelectBox("catcher-select");
-  // 盗塁
-  setupSelectBox("tourui-select");
-  // 走塁
-  setupSelectBox("sourui-select");
-  // 送球
-  setupSelectBox("soukyuu-select");
-});
-
+// FIXME: 関数名見直し
 // 基礎能力入力（入力値でアルファベット＋背景色を変更）
 function setupInputField(inputFieldId, displaySpanId) {
   const updateSpan = () => {
@@ -88,12 +59,54 @@ function setupInputField(inputFieldId, displaySpanId) {
   document.getElementById(inputFieldId).addEventListener("input", updateSpan);
 }
 
+// 基礎能力入力：弾道（入力値で矢印の角度＋背景色を変更）
+function setupInputFieldTrajectory(inputFieldId, displaySpanId) {
+  const updateSpan = () => {
+    const inputValue = parseInt(
+      document.getElementById(inputFieldId).value,
+      10
+    );
+    let spanClass = "";
+    let rotationAngle = "";
+
+    // 共通ロジック
+    if (inputValue === 2) {
+      spanClass = "pawa-bg-c";
+      rotationAngle = "-20deg";
+    } else if (inputValue === 3) {
+      spanClass = "pawa-bg-b";
+      rotationAngle = "-30deg";
+    } else if (inputValue === 4) {
+      spanClass = "pawa-bg-a";
+      rotationAngle = "-45deg";
+    } else {
+      spanClass = "pawa-bg-d";
+      rotationAngle = "-10deg";
+    }
+
+    // span要素の更新
+    const spanElement = document.getElementById(displaySpanId);
+    spanElement.className = `input-group-text text-white ${spanClass}`;
+
+    // アイコン要素を見つけて回転を適用する
+    const iconElement = spanElement.querySelector("i.fa");
+    if (iconElement) {
+      iconElement.style.transform = `rotate(${rotationAngle})`;
+    }
+  };
+
+  updateSpan(); // 初期状態の設定
+  document.getElementById(inputFieldId).addEventListener("input", updateSpan);
+}
+
 // ページが読み込まれたときに関数を実行
 document.addEventListener("DOMContentLoaded", function () {
   // コントロール
   setupInputField("control-input", "control-alphabet-display");
   // スタミナ
   setupInputField("stamina-input", "stamina-alphabet-display");
+  // 弾道
+  setupInputFieldTrajectory("trajectory-input", "trajectory-alphabet-display");
   // ミート
   setupInputField("meat-input", "meat-alphabet-display");
   // パワー
@@ -106,4 +119,31 @@ document.addEventListener("DOMContentLoaded", function () {
   setupInputField("defense-input", "defense-alphabet-display");
   // 捕球
   setupInputField("catching-input", "catching-alphabet-display");
+
+  // 回復
+  setupSelectBox("kaifuku-select");
+  // ケガしにくさ
+  setupSelectBox("kegasinikusa-select");
+  // 対ピンチ
+  setupSelectBox("taipinch-select");
+  // 対左打者
+  setupSelectBox("taihidaridasya-select");
+  // 打たれ強さ
+  setupSelectBox("utarezuyosa-select");
+  // ノビ
+  setupSelectBox("nobi-select");
+  // クイック
+  setupSelectBox("quick-select");
+  // チャンス
+  setupSelectBox("chance-select");
+  // 対左投手
+  setupSelectBox("taihidaritousyu-select");
+  // キャッチャー
+  setupSelectBox("catcher-select");
+  // 盗塁
+  setupSelectBox("tourui-select");
+  // 走塁
+  setupSelectBox("sourui-select");
+  // 送球
+  setupSelectBox("soukyuu-select");
 });

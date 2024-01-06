@@ -1238,11 +1238,10 @@
             <div class="mb-3">
               <div class="row">
                 <div class="col">
-                  <label class="form-label">弾道</label>
+                  <%= fielder_f.label :trajectory, "弾道", class: "form-label" %>
                   <div class="input-group">
-                    <input type="number" class="form-control" value="1">
-                    <%# TODO: 値によって角度を変える %>
-                    <span class="input-group-text"><i class="fa fa-solid fa-arrow-right"></i></span>
+                    <%= fielder_f.number_field :trajectory, class: "form-control", id:"trajectory-input", value: "1", min: 1, max: 4 %>
+                    <span class="input-group-text text-white pawa-bg-d" id="trajectory-alphabet-display"><i class="fa fa-solid fa-arrow-right" style="transform: rotate(-10deg);"></i></span>
                   </div>
                 </div>
                 <div class="col">
