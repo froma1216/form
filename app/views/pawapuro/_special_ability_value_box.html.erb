@@ -1,11 +1,11 @@
 <%# 特殊能力（値あり）の１box %>
 <%# TODO: 金特に対応させる %>
 <% case ability_value
-  when 2
+  when 2..3
     bg_class_1, bg_class_2, text_class = 'pawa-bg-sa-g1', 'pawa-bg-sa-g2', 'pawa-text-good'
   when -3..-2
     bg_class_1, bg_class_2, text_class = 'pawa-bg-sa-b1', 'pawa-bg-sa-b2', 'pawa-text-bad'
-  when 3
+  when 4
     bg_class_1, bg_class_2, text_class = 'pawa-bg-sa-sp1', 'pawa-bg-sa-sp2', 'pawa-text-special'
   else
     bg_class_1, bg_class_2, text_class = 'pawa-bg-sa-n1', 'pawa-bg-sa-n2', 'pawa-text-neutral'

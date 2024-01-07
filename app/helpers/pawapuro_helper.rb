@@ -16,11 +16,13 @@ module PawapuroHelper
   # 特能数値をアルファベットに変換
   def display_special_ability_alphabet(val)
     abilities = {
+      -3 => "G",
       -2 => "F",
       -1 => "E",
       0 => "D",
       1 => "C",
-      2 => "A"
+      2 => "B",
+      3 => "A"
     }
     content_tag(:span, abilities[val] || "")
   end
