@@ -73,9 +73,9 @@ class PawapuroController < ApplicationController
 
   def player_params
     params.require(:pawapuro_player).permit(
-      :last_name, :first_name,
-      pawapuro_pitcher_attributes: [:id, :pace],
-      pawapuro_fielder_attributes: [:id, :meat]
+      :last_name, :first_name, :player_name, :back_name, :birthday, :throws, :bats, :main_position, :sub_position_2, :sub_position_3, :sub_position_4, :sub_position_5, :sub_position_6, :sub_position_7, :kaifuku, :kegasinikusa, :note,
+      pawapuro_pitcher_attributes: [:id, :starter_proper, :reliever_proper, :closer_proper, :pace, :control, :stamina, :taipinch, :taihidaridasya, :utarezuyosa, :nobi, :quick],
+      pawapuro_fielder_attributes: [:id, :trajectory, :meat, :power, :running, :arm_strength, :defense, :catching, :chance, :taihidaritousyu, :catcher, :tourui, :sourui, :soukyuu]
     )
   end
   # def pitcher_params
