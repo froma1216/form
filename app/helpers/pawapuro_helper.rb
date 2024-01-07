@@ -32,7 +32,7 @@ module PawapuroHelper
     throws_bats = {
       "right" => "右",
       "left" => "左",
-      "both" => "両",
+      "both" => "両"
     }
     content_tag(:span, throws_bats[val] || "")
   end
@@ -40,15 +40,15 @@ module PawapuroHelper
   # 能力値（弾道）によって文字色、→の角度を変更
   def display_trajectory(trajectory)
     text_color, angle = case trajectory
-    when 2
-      ["pawa-text-c", "-20deg"]
-    when 3
-      ["pawa-text-b", "-30deg"]
-    when 4
-      ["pawa-text-a", "-45deg"]
-    else
-      ["pawa-text-d", "-10deg"]
-    end
+                        when 2
+                          ["pawa-text-c", "-20deg"]
+                        when 3
+                          ["pawa-text-b", "-30deg"]
+                        when 4
+                          ["pawa-text-a", "-45deg"]
+                        else
+                          ["pawa-text-d", "-10deg"]
+                        end
     content_tag(:i, "", class: "fa fa-solid fa-arrow-right #{text_color}", style: "transform: rotate(#{angle});")
   end
 
@@ -88,11 +88,9 @@ module PawapuroHelper
 
     (2..7).each do |num|
       sub_position = player.send("sub_position_#{num}")
-      if sub_position.to_i.nonzero? && num != player.main_position
-        positions << display_position_name(num)
-      end
+      positions << display_position_name(num) if sub_position.to_i.nonzero? && num != player.main_position
     end
-    positions.join('・').html_safe
+    positions.join("・").html_safe
   end
 
   # 属性名から位置番号を抽出（上記のdisplay_sub_positionsで使用）
@@ -111,7 +109,7 @@ module PawapuroHelper
 
   # 年齢計算
   def calculate_age(birthday)
-    now = Date.today
+    now = Time.zone.today
     age = now.year - birthday.year
     age -= 1 if now.yday < birthday.yday
     age

@@ -22,6 +22,13 @@ class PawapuroController < ApplicationController
     # @pfielder = PawapuroFielder.new
   end
 
+  # 選手情報編集画面
+  def edit
+    @player = PawapuroPlayer.find(params[:id])
+    # @pitcher = PawapuroPitcher.find(params[:id])
+    # @pfielder = PawapuroFielder.find(params[:id])
+  end
+
   # 選手作成アクション
   def create
     @player = PawapuroPlayer.new(player_params)
@@ -35,13 +42,6 @@ class PawapuroController < ApplicationController
       # 失敗時の処理
       render :new
     end
-  end
-
-  # 選手情報編集画面
-  def edit
-    @player = PawapuroPlayer.find(params[:id])
-    # @pitcher = PawapuroPitcher.find(params[:id])
-    # @pfielder = PawapuroFielder.find(params[:id])
   end
 
   # 選手編集アクション
